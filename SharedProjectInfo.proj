@@ -11,9 +11,9 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/[username]/[project]/blob/master</RepositoryUrl>
-    <PackageLicenseUrl>https://github.com/[username]/[project]/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://heleonix.github.io/[project-name]</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Heleonix/Heleonix.Testing/tree/master</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/Heleonix/Heleonix.Testing/tree/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Heleonix/Heleonix.Testing/tree/master</PackageProjectUrl>
     <PackageIconUrl>https://s.gravatar.com/avatar/22d1d9391b9f682a589d324d403ec0d8?s=256</PackageIconUrl>
 
     <IsPackable>true</IsPackable>
