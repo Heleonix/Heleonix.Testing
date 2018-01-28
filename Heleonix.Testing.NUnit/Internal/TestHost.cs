@@ -96,7 +96,7 @@ namespace Heleonix.Testing.NUnit.Internal
         {
             if (!this.SpecStructureRules.ContainsKey(child.Type))
             {
-                throw new InvalidOperationException($"Invalid spec: '{child.Type}'");
+                throw new InvalidOperationException($"The spec '{child.Type}' is not valid for the current test pattern");
             }
 
             var rule = this.SpecStructureRules[child.Type];
@@ -105,7 +105,7 @@ namespace Heleonix.Testing.NUnit.Internal
                 && !Regex.IsMatch(string.Join(",", this.specExecutionStack), rule.SpecExecutionStackRule))
             {
                 throw new InvalidOperationException($"Invalid test structure: cannot place the '{child.Type}' " +
-                    $"into the execution stack '{string.Join("->", this.specExecutionStack.Reverse())}'");
+                    $"into the '{string.Join("->", this.specExecutionStack.Reverse())}'");
             }
 
             if (rule.PredecessorsRule != null)

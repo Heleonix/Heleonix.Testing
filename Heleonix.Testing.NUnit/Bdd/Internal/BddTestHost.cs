@@ -40,9 +40,9 @@ namespace Heleonix.Testing.NUnit.Bdd.Internal
                         "^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^(When)|^(Then)|^(And)|^$")
                 },
                 { SpecNodeType.SetupEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^$") },
-                { SpecNodeType.BeforeEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)?") },
-                { SpecNodeType.AfterEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(BeforeEach)?") },
-                { SpecNodeType.CleanupEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(AfterEach)?") },
+                { SpecNodeType.BeforeEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)|^$") },
+                { SpecNodeType.AfterEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)|^(BeforeEach)|^$") },
+                { SpecNodeType.CleanupEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)|^(BeforeEach)|^(AfterEach)|^$") },
             };
     }
 }

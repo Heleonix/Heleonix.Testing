@@ -10,9 +10,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
+		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 		SharedProjectInfo.proj = SharedProjectInfo.proj
 		stylecop.json = stylecop.json
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{4AEAF240-3ED0-49D3-B054-27402285220A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{783E9705-9D30-414A-956F-DBDCB06F3ACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heleonix.Testing.NUnit.Tests", "Heleonix.Testing.NUnit.Tests\Heleonix.Testing.NUnit.Tests.csproj", "{D9F8D146-C245-4F6E-8DE2-45738659BA83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,9 +31,17 @@ Global
 		{36AD64B1-92AD-4BCE-931E-FBEC6C655E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36AD64B1-92AD-4BCE-931E-FBEC6C655E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36AD64B1-92AD-4BCE-931E-FBEC6C655E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F8D146-C245-4F6E-8DE2-45738659BA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F8D146-C245-4F6E-8DE2-45738659BA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F8D146-C245-4F6E-8DE2-45738659BA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F8D146-C245-4F6E-8DE2-45738659BA83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36AD64B1-92AD-4BCE-931E-FBEC6C655E3F} = {4AEAF240-3ED0-49D3-B054-27402285220A}
+		{D9F8D146-C245-4F6E-8DE2-45738659BA83} = {783E9705-9D30-414A-956F-DBDCB06F3ACA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {710E8CFD-309B-4054-9763-4649C9D5E58C}
