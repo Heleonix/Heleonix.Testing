@@ -3,7 +3,7 @@
     <Version>1.0.0</Version>
     <PackageReleaseNotes>Initial release</PackageReleaseNotes>
 
-    <Description>Helpful functionality for writing tests</Description>
+    <Description>The library for writing tests in BDD and AAA style</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
 
     <Authors>Heleonix - Hennadii Lutsyshyn</Authors>
@@ -17,7 +17,7 @@
     <PackageIconUrl>https://s.gravatar.com/avatar/22d1d9391b9f682a589d324d403ec0d8?s=256</PackageIconUrl>
 
     <IsPackable>true</IsPackable>
-    <DevelopmentDependency>false</DevelopmentDependency>
+    <DevelopmentDependency>true</DevelopmentDependency>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>false</IncludeSource>
     <NoPackageAnalysis>true</NoPackageAnalysis>

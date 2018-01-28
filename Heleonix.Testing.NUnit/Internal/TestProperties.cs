@@ -14,13 +14,20 @@ namespace Heleonix.Testing.NUnit.Internal
     /// </summary>
     internal static class TestProperties
     {
-        private const string TestHostName = nameof(TestHost);
-
         private static readonly string Prefix = typeof(TestProperties).Namespace + ".";
+
+        private static readonly string OutputPrefix = Prefix + "Output.";
+
+        private static readonly string TestHostName = PropertyName(nameof(TestHost));
 
         private static readonly string IsOutputWrittenName = PropertyName(nameof(IsOutputWritten));
 
-        private static readonly string OutputPrefix = Prefix + "Output.";
+        /// <summary>
+        /// Builds a name of an output property.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>A name of an output property.</returns>
+        public static string OutputPropertyName(string name) => OutputPrefix + name;
 
         /// <summary>
         /// Gets the properties to be written to the output.
@@ -32,6 +39,21 @@ namespace Heleonix.Testing.NUnit.Internal
                 .SelectMany(key => properties[key].OfType<object>()).ToArray();
 
         /// <summary>
+        /// Determines whether output is written.
+        /// </summary>
+        /// <param name="properties">The properties.</param>
+        /// <returns>
+        ///   <c>true</c> if output has been written; otherwise, <c>false</c>.
+        /// </returns>
+        public static bool IsOutputWritten(IPropertyBag properties) => properties[IsOutputWrittenName].Contains(true);
+
+        /// <summary>
+        /// Sets <c>true</c> if output has been written; otherwise <c>false</c>.
+        /// </summary>
+        /// <param name="properties">The properties.</param>
+        public static void SetIsOutputWritten(IPropertyBag properties) => properties.Set(IsOutputWrittenName, true);
+
+        /// <summary>
         /// Gets the test host.
         /// </summary>
         /// <param name="properties">The properties.</param>
@@ -39,38 +61,11 @@ namespace Heleonix.Testing.NUnit.Internal
         public static TestHost GetTestHost(IPropertyBag properties) => properties[TestHostName][0] as TestHost;
 
         /// <summary>
-        /// Determines whether output is written.
-        /// </summary>
-        /// <param name="properties">The properties.</param>
-        /// <returns>
-        ///   <c>true</c> if output has been written; otherwise, <c>false</c>.
-        /// </returns>
-        public static bool IsOutputWritten(IPropertyBag properties) =>
-            properties[IsOutputWrittenName].Contains(true);
-
-        /// <summary>
-        /// Builds a name of an output property.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <returns>A name of an output property.</returns>
-        public static string OutputPropertyName(string name) => OutputPrefix + name;
-
-        /// <summary>
-        /// Sets <c>true</c> if output has been written; otherwise <c>false</c>.
-        /// </summary>
-        /// <param name="properties">The properties.</param>
-        public static void SetIsOutputWritten(IPropertyBag properties) =>
-            properties.Set(IsOutputWrittenName, true);
-
-        /// <summary>
         /// Sets the test host.
         /// </summary>
         /// <param name="properties">The properties.</param>
-        /// <param name="node">The node.</param>
-        public static void SetTestHost(IPropertyBag properties, TestHost node)
-        {
-            properties.Set(TestHostName, node);
-        }
+        /// <param name="host">The host.</param>
+        public static void SetTestHost(IPropertyBag properties, TestHost host) => properties.Set(TestHostName, host);
 
         private static string PropertyName(string name) => Prefix + name;
     }
