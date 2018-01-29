@@ -1,14 +1,17 @@
 # Heleonix.Testing
 The library for writing tests in BDD and AAA style
 
-## BDD: Behavior Driven Development
+## AAA: Arrange Act Assert
+
+#### Structure
 ```csharp
+using Heleonix.Testing.NUnit.Aaa;
 using static Heleonix.Testing.NUnit.Aaa.AaaSpec;
 
 [ComponentTest(Type = typeof(Component))]
 public static class ComponentTests
 {
-    [MemberTest(Name = nameof(Member))]
+    [MemberTest(Name = nameof(Component.Member))]
     public static void Member()
     {
         Arrange(() => { });
@@ -17,7 +20,7 @@ public static class ComponentTests
 
         Teardown(() => { });
 
-        When("When 1", () =>
+        When("the action #1 is executed", () =>
         {
             Arrange(() => { });
 
@@ -25,9 +28,9 @@ public static class ComponentTests
 
             Teardown(() => { });
 
-            Should("Should 1", () => { });
+            Should("lead to the result #1", () => { });
 
-            And("And 1", () =>
+            And("the condition #1 is true", () =>
             {
                 Arrange(() => { });
 
@@ -35,41 +38,44 @@ public static class ComponentTests
 
                 Teardown(() => { });
 
-                Should("Should 2", () => { });
+                Should("lead to the result #2", () => { });
             });
         });
     }
 }
 ```
 
-## AAA: Arrange Act Assert
+#### Tests Output
+
+## BDD: Behavior Driven Development
+
+#### Structure
 ```csharp
 using static Heleonix.Testing.NUnit.Bdd.BddSpec;
 
 [Feature(Name = "Feature")]
 OR
-[Story(
-    Id = "111",
-    Summary = "The cool story",
-    AsA = "Product owner",
-    IWant = "a cool story",
-    SoThat = "I earn a lot of money")]
-public static class ExampleTests
-{
-    [Scenario(Name = nameof(Example))]
-    public static void Example()
+using Heleonix.Testing.NUnit.Bdd;
+    using static Heleonix.Testing.NUnit.Bdd.BddSpec;
+
+    /// <summary>
+    /// www
+    /// </summary>
+    [Story(
+        Id = "111",
+        Summary = "The cool story",
+        AsA = "Product owner",
+        IWant = "a cool story",
+        SoThat = "I earn a lot of money")]
+    public static class TheCoolStory
     {
-        Given("Given 1", () =>
+        /// <summary>
+        /// Examples this instance.
+        /// </summary>
+        [Scenario(Name = "Earn a lot of money")]
+        public static void Scenario()
         {
-            SetupEach(() => { });
-
-            BeforeEach(() => { });
-
-            AfterEach(() => { });
-
-            CleanupEach(() => { });
-
-            When("When 1", () =>
+            Given("the precondition #1", () =>
             {
                 SetupEach(() => { });
 
@@ -79,9 +85,7 @@ public static class ExampleTests
 
                 CleanupEach(() => { });
 
-                Then("Then 1", () => { });
-
-                And("And 1", () =>
+                When("the action #1 is executed", () =>
                 {
                     SetupEach(() => { });
 
@@ -91,33 +95,9 @@ public static class ExampleTests
 
                     CleanupEach(() => { });
 
-                    Then("Then 2", () => { });
-                });
-            });
+                    Then("the result #1 happens", () => { });
 
-            And("And 2", () =>
-            {
-                SetupEach(() => { });
-
-                BeforeEach(() => { });
-
-                AfterEach(() => { });
-
-                CleanupEach(() => { });
-
-                When("When 2", () =>
-                {
-                    SetupEach(() => { });
-
-                    BeforeEach(() => { });
-
-                    AfterEach(() => { });
-
-                    CleanupEach(() => { });
-
-                    Then("Then 3", () => { });
-
-                    And("And 3", () =>
+                    And("the condition #1 is true", () =>
                     {
                         SetupEach(() => { });
 
@@ -127,11 +107,49 @@ public static class ExampleTests
 
                         CleanupEach(() => { });
 
-                        Then("Then 4", () => { });
+                        Then("the result #2 happens", () => { });
+                    });
+                });
+
+                And("condition #2 is true", () =>
+                {
+                    SetupEach(() => { });
+
+                    BeforeEach(() => { });
+
+                    AfterEach(() => { });
+
+                    CleanupEach(() => { });
+
+                    When("the action #2 is executed", () =>
+                    {
+                        SetupEach(() => { });
+
+                        BeforeEach(() => { });
+
+                        AfterEach(() => { });
+
+                        CleanupEach(() => { });
+
+                        Then("the result #3 happens", () => { });
+
+                        And("the condition #3 is true", () =>
+                        {
+                            SetupEach(() => { });
+
+                            BeforeEach(() => { });
+
+                            AfterEach(() => { });
+
+                            CleanupEach(() => { });
+
+                            Then("the result #4 happens", () => { });
+                        });
                     });
                 });
             });
-        });
+        }
     }
-}
 ```
+
+#### Tests Output
