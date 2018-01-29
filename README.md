@@ -46,6 +46,7 @@ public static class ComponentTests
 ```
 
 #### Tests Output
+![AAA](https://github.com/Heleonix/heleonix.github.io/blob/master/images/AAA.png)
 
 ## BDD: Behavior Driven Development
 
@@ -153,3 +154,4 @@ using Heleonix.Testing.NUnit.Bdd;
 ```
 
 #### Tests Output
+![BDD](https://github.com/Heleonix/heleonix.github.io/blob/master/images/BDD.png)
