@@ -1,6 +1,9 @@
 # Heleonix.Testing
 The library for writing tests in BDD and AAA style
 
+## Install
+https://www.nuget.org/packages/Heleonix.Testing.NUnit
+
 ## AAA: Arrange Act Assert
 
 #### Structure
