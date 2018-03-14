@@ -60,6 +60,8 @@ using static Heleonix.Testing.NUnit.Bdd.BddSpec;
 
 [Feature(Name = "Feature")]
 OR
+[Scenario(Name = "Some scenarion")]
+OR
 [Story(
     Id = "111",
     Summary = "The cool story",
