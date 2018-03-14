@@ -55,31 +55,33 @@ public static class ComponentTests
 
 #### Structure
 ```csharp
+using Heleonix.Testing.NUnit.Bdd;
 using static Heleonix.Testing.NUnit.Bdd.BddSpec;
 
 [Feature(Name = "Feature")]
 OR
-using Heleonix.Testing.NUnit.Bdd;
-    using static Heleonix.Testing.NUnit.Bdd.BddSpec;
-
-    /// <summary>
-    /// www
-    /// </summary>
-    [Story(
-        Id = "111",
-        Summary = "The cool story",
-        AsA = "Product owner",
-        IWant = "a cool story",
-        SoThat = "I earn a lot of money")]
-    public static class TheCoolStory
+[Story(
+    Id = "111",
+    Summary = "The cool story",
+    AsA = "Product owner",
+    IWant = "a cool story",
+    SoThat = "I earn a lot of money")]
+public static class TheCoolStory
+{
+    [Scenario(Name = "Earn a lot of money")]
+    public static void Scenario()
     {
-        /// <summary>
-        /// Examples this instance.
-        /// </summary>
-        [Scenario(Name = "Earn a lot of money")]
-        public static void Scenario()
+        Given("the precondition #1", () =>
         {
-            Given("the precondition #1", () =>
+            SetupEach(() => { });
+
+            BeforeEach(() => { });
+
+            AfterEach(() => { });
+
+            CleanupEach(() => { });
+
+            When("the action #1 is executed", () =>
             {
                 SetupEach(() => { });
 
@@ -89,7 +91,9 @@ using Heleonix.Testing.NUnit.Bdd;
 
                 CleanupEach(() => { });
 
-                When("the action #1 is executed", () =>
+                Then("the result #1 happens", () => { });
+
+                And("the condition #1 is true", () =>
                 {
                     SetupEach(() => { });
 
@@ -99,23 +103,21 @@ using Heleonix.Testing.NUnit.Bdd;
 
                     CleanupEach(() => { });
 
-                    Then("the result #1 happens", () => { });
-
-                    And("the condition #1 is true", () =>
-                    {
-                        SetupEach(() => { });
-
-                        BeforeEach(() => { });
-
-                        AfterEach(() => { });
-
-                        CleanupEach(() => { });
-
-                        Then("the result #2 happens", () => { });
-                    });
+                    Then("the result #2 happens", () => { });
                 });
+            });
 
-                And("condition #2 is true", () =>
+            And("condition #2 is true", () =>
+            {
+                SetupEach(() => { });
+
+                BeforeEach(() => { });
+
+                AfterEach(() => { });
+
+                CleanupEach(() => { });
+
+                When("the action #2 is executed", () =>
                 {
                     SetupEach(() => { });
 
@@ -125,7 +127,9 @@ using Heleonix.Testing.NUnit.Bdd;
 
                     CleanupEach(() => { });
 
-                    When("the action #2 is executed", () =>
+                    Then("the result #3 happens", () => { });
+
+                    And("the condition #3 is true", () =>
                     {
                         SetupEach(() => { });
 
@@ -135,25 +139,13 @@ using Heleonix.Testing.NUnit.Bdd;
 
                         CleanupEach(() => { });
 
-                        Then("the result #3 happens", () => { });
-
-                        And("the condition #3 is true", () =>
-                        {
-                            SetupEach(() => { });
-
-                            BeforeEach(() => { });
-
-                            AfterEach(() => { });
-
-                            CleanupEach(() => { });
-
-                            Then("the result #4 happens", () => { });
-                        });
+                        Then("the result #4 happens", () => { });
                     });
                 });
             });
-        }
+        });
     }
+}
 ```
 
 #### Tests Output
