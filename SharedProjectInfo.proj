@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
-    <Version>1.1.0</Version>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <Version>1.1.1</Version>
+    <PackageReleaseNotes>Removed requirement of Nuget 3.3; reduced list of supported target frameworks</PackageReleaseNotes>
 
     <Description>The library for writing tests in BDD and AAA style</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
@@ -21,7 +21,5 @@
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>false</IncludeSource>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-
-    <MinClientVersion>3.3</MinClientVersion>
   </PropertyGroup>
 </Project>
