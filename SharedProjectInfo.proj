@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
-    <Version>1.1.1</Version>
-    <PackageReleaseNotes>Removed requirement of Nuget 3.3; reduced list of supported target frameworks</PackageReleaseNotes>
+    <Version>1.2.0</Version>
+    <PackageReleaseNotes>Added NUnit 3.9.0 as a dependency package</PackageReleaseNotes>
 
     <Description>The library for writing tests in BDD and AAA style</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
