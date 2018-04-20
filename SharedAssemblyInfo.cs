@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyDescription("The library for writing tests in BDD and AAA style")]
+[assembly: AssemblyDescription("The library for writing tests in BDD and AAA styles")]
 [assembly: AssemblyCompany("Heleonix - Hennadii Lutsyshyn")]
 [assembly: AssemblyProduct("Heleonix.Testing")]
 [assembly: AssemblyCopyright("Copyright (c) 2018-present Heleonix - Hennadii Lutsyshyn")]

@@ -1,5 +1,5 @@
 # Heleonix.Testing
-The library for writing tests in BDD and AAA style
+The library for writing tests in BDD and AAA styles
 
 ## Install
 https://www.nuget.org/packages/Heleonix.Testing.NUnit
@@ -49,7 +49,7 @@ public static class ComponentTests
 ```
 
 #### Tests Output
-![AAA](https://github.com/Heleonix/heleonix.github.io/blob/master/images/AAA.png)
+![AAA](Docs/images/AAA.png)
 
 ## BDD: Behavior Driven Development
 
@@ -59,8 +59,6 @@ using Heleonix.Testing.NUnit.Bdd;
 using static Heleonix.Testing.NUnit.Bdd.BddSpec;
 
 [Feature(Name = "Feature")]
-OR
-[Scenario(Name = "Some scenarion")]
 OR
 [Story(
     Id = "111",
@@ -151,4 +149,4 @@ public static class TheCoolStory
 ```
 
 #### Tests Output
-![BDD](https://github.com/Heleonix/heleonix.github.io/blob/master/images/BDD.png)
+![BDD](Docs/images/BDD.png)
