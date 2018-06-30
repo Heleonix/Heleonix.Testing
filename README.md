@@ -11,37 +11,122 @@ https://www.nuget.org/packages/Heleonix.Testing.NUnit
 using Heleonix.Testing.NUnit.Aaa;
 using static Heleonix.Testing.NUnit.Aaa.AaaSpec;
 
-[ComponentTest(Type = typeof(Component))]
-public static class ComponentTests
+/// <summary>
+/// Tests the <see cref="MyComponent"/>.
+/// </summary>
+[ComponentTest(Type = typeof(MyComponent))]
+public static class MyComponentTests
 {
-    [MemberTest(Name = nameof(Component.Member))]
-    public static void Member()
+    /// <summary>
+    /// Tests the <see cref="MyComponent.Member1"/>.
+    /// </summary>
+    [MemberTest(Name = nameof(MyComponent.Member1))]
+    public static void Member1()
     {
-        Arrange(() => { });
+        Arrange(() =>
+        {
+        });
 
-        Act(() => { });
+        Act(() =>
+        {
+        });
 
-        Teardown(() => { });
+        Teardown(() =>
+        {
+        });
+
+        When("the condition #1 is true", () =>
+        {
+            Arrange(() =>
+            {
+            });
+
+            Act(() =>
+            {
+            });
+
+            Teardown(() =>
+            {
+            });
+
+            Should("lead to the result #1", () =>
+            {
+            });
+        });
+
+        When("the condition #2 is true", () =>
+        {
+            Arrange(() =>
+            {
+            });
+
+            Act(() =>
+            {
+            });
+
+            Teardown(() =>
+            {
+            });
+
+            Should("lead to the result #2", () =>
+            {
+            });
+        });
+    }
+
+    /// <summary>
+    /// Tests the <see cref="MyComponent.Member2"/>.
+    /// </summary>
+    [MemberTest(Name = nameof(MyComponent.Member2))]
+    public static void Member2()
+    {
+        Arrange(() =>
+        {
+        });
+
+        Act(() =>
+        {
+        });
+
+        Teardown(() =>
+        {
+        });
 
         When("the action #1 is executed", () =>
         {
-            Arrange(() => { });
+            Arrange(() =>
+            {
+            });
 
-            Act(() => { });
+            Act(() =>
+            {
+            });
 
-            Teardown(() => { });
+            Teardown(() =>
+            {
+            });
 
-            Should("lead to the result #1", () => { });
+            Should("lead to the result #1", () =>
+            {
+            });
 
             And("the condition #1 is true", () =>
             {
-                Arrange(() => { });
+                Arrange(() =>
+                {
+                });
 
-                Act(() => { });
+                Act(() =>
+                {
+                });
 
-                Teardown(() => { });
+                Teardown(() =>
+                {
+                });
 
-                Should("lead to the result #2", () => { });
+                Should("lead to the result #2", () =>
+                {
+                });
             });
         });
     }
