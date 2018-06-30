@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <Version>1.2.0</Version>
-    <PackageReleaseNotes>Added NUnit 3.9.0 as a dependency package</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support of sequential When in AAA spec</PackageReleaseNotes>
 
     <Description>The library for writing tests in BDD and AAA styles</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
