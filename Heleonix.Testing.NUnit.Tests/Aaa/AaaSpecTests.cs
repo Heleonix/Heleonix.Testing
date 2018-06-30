@@ -250,40 +250,5 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
             Assert.That(node.NestingLevel, Is.EqualTo(0));
             Assert.That(node.Parent, Is.EqualTo(rootNode));
         }
-
-        /// <summary>
-        /// Tests integration of specs.
-        /// </summary>
-        [MemberTest(Name = nameof(Example))]
-        public static void Example()
-        {
-            AaaSpec.Arrange(() => { });
-
-            AaaSpec.Act(() => { });
-
-            AaaSpec.Teardown(() => { });
-
-            AaaSpec.When("When 1", () =>
-            {
-                AaaSpec.Arrange(() => { });
-
-                AaaSpec.Act(() => { });
-
-                AaaSpec.Teardown(() => { });
-
-                AaaSpec.Should("Should 1", () => { });
-
-                AaaSpec.And("And 1", () =>
-                {
-                    AaaSpec.Arrange(() => { });
-
-                    AaaSpec.Act(() => { });
-
-                    AaaSpec.Teardown(() => { });
-
-                    AaaSpec.Should("Should 2", () => { });
-                });
-            });
-        }
     }
 }

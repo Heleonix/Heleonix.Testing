@@ -56,6 +56,8 @@
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Aaa\AaaSpecTests.cs" />
+    <Compile Include="Aaa\Examples\MyComponent.cs" />
+    <Compile Include="Aaa\Examples\MyComponentTests.cs" />
     <Compile Include="Aaa\Internal\AaaTestHostTests.cs" />
     <Compile Include="Bdd\BddSpecTests.cs" />
     <Compile Include="Bdd\Internal\BddTestHostTests.cs" />
@@ -100,11 +102,17 @@
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
       <Version>2.6.0</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk">
+      <Version>15.7.2</Version>
+    </PackageReference>
     <PackageReference Include="moq">
       <Version>4.8.2</Version>
     </PackageReference>
     <PackageReference Include="nunit">
       <Version>3.9.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit3TestAdapter">
+      <Version>3.10.0</Version>
     </PackageReference>
     <PackageReference Include="RoslynSecurityGuard">
       <Version>2.3.0</Version>

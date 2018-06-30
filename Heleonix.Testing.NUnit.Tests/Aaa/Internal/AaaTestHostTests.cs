@@ -38,7 +38,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa.Internal
 
             // Assert
             Assert.That(rules[SpecNodeType.When].SpecExecutionStackRule, Is.EqualTo("^$"));
-            Assert.That(rules[SpecNodeType.When].PredecessorsRule, Is.EqualTo("^(Arrange)|^(Act)|^(Teardown)|^$"));
+            Assert.That(rules[SpecNodeType.When].PredecessorsRule, Is.EqualTo("^(Arrange)|^(Act)|^(Teardown)|^(When)|^$"));
 
             Assert.That(rules[SpecNodeType.And].SpecExecutionStackRule, Is.EqualTo("^(And,)*(When)"));
             Assert.That(rules[SpecNodeType.And].PredecessorsRule, Is.EqualTo("^(Arrange)|^(Act)|^(Should)|^(Teardown)|^(And)|^$"));

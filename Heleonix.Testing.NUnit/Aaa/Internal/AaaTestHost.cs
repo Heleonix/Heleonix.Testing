@@ -23,7 +23,7 @@ namespace Heleonix.Testing.NUnit.Aaa.Internal
         protected override IDictionary<SpecNodeType, SpecStructureRule> SpecStructureRules { get; } =
             new Dictionary<SpecNodeType, SpecStructureRule>
             {
-                { SpecNodeType.When, new SpecStructureRule("^$", "^(Arrange)|^(Act)|^(Teardown)|^$") },
+                { SpecNodeType.When, new SpecStructureRule("^$", "^(Arrange)|^(Act)|^(Teardown)|^(When)|^$") },
                 {
                     SpecNodeType.And, new SpecStructureRule(
                         "^(And,)*(When)",
