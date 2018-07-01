@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
-    <Version>1.3.0</Version>
-    <PackageReleaseNotes>Added support of sequential When in AAA spec</PackageReleaseNotes>
+    <Version>1.4.0</Version>
+    <PackageReleaseNotes>Set NUnit dependency as runtime</PackageReleaseNotes>
 
     <Description>The library for writing tests in BDD and AAA styles</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
