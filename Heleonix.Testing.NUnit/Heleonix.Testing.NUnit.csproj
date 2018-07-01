@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../SharedProjectInfo.proj" />
 
   <PropertyGroup>
@@ -42,7 +42,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="nunit" Version="3.9.0">
-      <IncludeAssets>compile</IncludeAssets>
+      <IncludeAssets>compile;runtime</IncludeAssets>
     </PackageReference>
     <PackageReference Include="RoslynSecurityGuard" Version="2.3.0">
       <PrivateAssets>all</PrivateAssets>
