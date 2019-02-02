@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
-		SharedProjectInfo.proj = SharedProjectInfo.proj
+		SharedProjectInfo.props = SharedProjectInfo.props
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{E42238
 		Docs\images\BDD.png = Docs\images\BDD.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heleonix.Testing.NUnit.Tests", "Heleonix.Testing.NUnit.Tests\Heleonix.Testing.NUnit.Tests.csproj", "{8821B8D3-CC9E-4402-ABF5-0F4F99E82A8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heleonix.Testing.NUnit.Tests", "Heleonix.Testing.NUnit.Tests\Heleonix.Testing.NUnit.Tests.csproj", "{8821B8D3-CC9E-4402-ABF5-0F4F99E82A8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
