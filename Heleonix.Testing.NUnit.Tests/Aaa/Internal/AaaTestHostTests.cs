@@ -13,7 +13,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa.Internal
     using Heleonix.Testing.NUnit.Internal;
 
     /// <summary>
-    /// Tests the <see cref="AaaTestHost"/>
+    /// Tests the <see cref="AaaTestHost"/>.
     /// </summary>
     public static class AaaTestHostTests
     {

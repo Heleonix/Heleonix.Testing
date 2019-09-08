@@ -20,7 +20,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
     public static class BddSpecTests
     {
         /// <summary>
-        /// Tests the <see cref="BddSpec.AfterEach(Action)"/>
+        /// Tests the <see cref="BddSpec.AfterEach(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void AfterEach()
@@ -52,7 +52,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.And(string, Action)"/>
+        /// Tests the <see cref="BddSpec.And(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void And()
@@ -89,7 +89,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.BeforeEach(Action)"/>
+        /// Tests the <see cref="BddSpec.BeforeEach(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void BeforeEach()
@@ -121,7 +121,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.CleanupEach(Action)"/>
+        /// Tests the <see cref="BddSpec.CleanupEach(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void CleanupEach()
@@ -153,7 +153,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.Given(string, Action)"/>
+        /// Tests the <see cref="BddSpec.Given(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void Given()
@@ -191,7 +191,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.SetupEach(Action)"/>
+        /// Tests the <see cref="BddSpec.SetupEach(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void SetupEach()
@@ -223,7 +223,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.Then(string, Action)"/>
+        /// Tests the <see cref="BddSpec.Then(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void Then()
@@ -301,7 +301,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="BddSpec.When(string, Action)"/>
+        /// Tests the <see cref="BddSpec.When(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void When()

@@ -21,10 +21,10 @@ namespace Heleonix.Testing.NUnit
         /// <summary>
         /// Build a TestMethod from the provided MethodInfo.
         /// </summary>
-        /// <param name="method">The method to be used as a test</param>
-        /// <param name="suite">The TestSuite to which the method will be added</param>
+        /// <param name="method">The method to be used as a test.</param>
+        /// <param name="suite">The TestSuite to which the method will be added.</param>
         /// <returns>
-        /// A TestMethod object
+        /// A TestMethod object.
         /// </returns>
         public virtual TestMethod BuildFrom(IMethodInfo method, Test suite)
         {
@@ -33,7 +33,9 @@ namespace Heleonix.Testing.NUnit
                 suite,
                 new TestCaseParameters { TestName = this.TestName });
 
+#pragma warning disable CA1062 // Validate arguments of public methods
             foreach (var key in suite.Properties.Keys)
+#pragma warning restore CA1062 // Validate arguments of public methods
             {
                 foreach (var value in suite.Properties[key])
                 {

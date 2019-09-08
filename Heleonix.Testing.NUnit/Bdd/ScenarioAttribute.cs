@@ -43,10 +43,10 @@ namespace Heleonix.Testing.NUnit.Bdd
         /// <summary>
         /// Build a TestMethod from the provided MethodInfo.
         /// </summary>
-        /// <param name="method">The method to be used as a test</param>
-        /// <param name="suite">The TestSuite to which the method will be added</param>
+        /// <param name="method">The method to be used as a test.</param>
+        /// <param name="suite">The TestSuite to which the method will be added.</param>
         /// <returns>
-        /// A TestMethod object
+        /// A TestMethod object.
         /// </returns>
         public override TestMethod BuildFrom(IMethodInfo method, Test suite)
         {

@@ -20,7 +20,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
     public static class AaaSpecTests
     {
         /// <summary>
-        /// Tests the <see cref="AaaSpec.Act(Action)"/>
+        /// Tests the <see cref="AaaSpec.Act(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void Act()
@@ -52,7 +52,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="AaaSpec.And(string, Action)"/>
+        /// Tests the <see cref="AaaSpec.And(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void And()
@@ -89,7 +89,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="AaaSpec.Arrange(Action)"/>
+        /// Tests the <see cref="AaaSpec.Arrange(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void Arrange()
@@ -121,7 +121,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="AaaSpec.Should(string, Action)"/>
+        /// Tests the <see cref="AaaSpec.Should(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void Should()
@@ -184,7 +184,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="AaaSpec.Teardown(Action)"/>
+        /// Tests the <see cref="AaaSpec.Teardown(Action)"/>.
         /// </summary>
         [Test(Description = "Should add the spec to the parent node")]
         public static void Teardown()
@@ -216,7 +216,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         }
 
         /// <summary>
-        /// Tests the <see cref="AaaSpec.When(string, Action)"/>
+        /// Tests the <see cref="AaaSpec.When(string, Action)"/>.
         /// </summary>
         [Test(Description = "Should add and execute the spec to the parent node")]
         public static void When()
