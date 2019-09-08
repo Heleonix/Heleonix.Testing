@@ -73,6 +73,6 @@ namespace Heleonix.Testing.NUnit.Internal
         /// <summary>
         /// The Teardown.
         /// </summary>
-        Teardown
+        Teardown,
     }
 }

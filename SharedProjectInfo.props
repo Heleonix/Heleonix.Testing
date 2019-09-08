@@ -19,6 +19,7 @@
     <IsPackable>true</IsPackable>
     <DevelopmentDependency>true</DevelopmentDependency>
     <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSource>false</IncludeSource>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>

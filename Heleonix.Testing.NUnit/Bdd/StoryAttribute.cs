@@ -70,7 +70,7 @@ namespace Heleonix.Testing.NUnit.Bdd
                 {
                     { TestProperties.OutputPropertyName(nameof(this.AsA)), $"As A {this.AsA}" },
                     { TestProperties.OutputPropertyName(nameof(this.IWant)), $"I Want {this.IWant}" },
-                    { TestProperties.OutputPropertyName(nameof(this.SoThat)), $"So That {this.SoThat}" }
+                    { TestProperties.OutputPropertyName(nameof(this.SoThat)), $"So That {this.SoThat}" },
                 };
             }
         }

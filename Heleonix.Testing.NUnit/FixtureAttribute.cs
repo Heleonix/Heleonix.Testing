@@ -24,12 +24,14 @@ namespace Heleonix.Testing.NUnit
         /// <summary>
         /// Modifies a test as defined for the specific attribute.
         /// </summary>
-        /// <param name="test">The test to modify</param>
+        /// <param name="test">The test to modify.</param>
         public virtual void ApplyToTest(Test test)
         {
             foreach (var prop in this.Properties)
             {
+#pragma warning disable CA1062 // Validate arguments of public methods
                 test.Properties.Add(prop.Key, prop.Value);
+#pragma warning restore CA1062 // Validate arguments of public methods
             }
         }
 

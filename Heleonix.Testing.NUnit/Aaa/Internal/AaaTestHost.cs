@@ -36,7 +36,7 @@ namespace Heleonix.Testing.NUnit.Aaa.Internal
                 },
                 { SpecNodeType.Arrange, new SpecStructureRule("^(When)|^(And)|^$", "^$") },
                 { SpecNodeType.Act, new SpecStructureRule("^(When)|^(And)|^$", "^(Arrange)|^$") },
-                { SpecNodeType.Teardown, new SpecStructureRule("^(When)|^(And)|^$", "^(Arrange)|^(Act)|^$") }
+                { SpecNodeType.Teardown, new SpecStructureRule("^(When)|^(And)|^$", "^(Arrange)|^(Act)|^$") },
             };
     }
 }

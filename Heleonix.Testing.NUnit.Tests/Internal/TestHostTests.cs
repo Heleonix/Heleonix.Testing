@@ -72,7 +72,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 {
                     { SpecNodeType.When, new SpecStructureRule(null, null) },
-                    { SpecNodeType.Arrange, new SpecStructureRule(null, null) }
+                    { SpecNodeType.Arrange, new SpecStructureRule(null, null) },
                 });
 
             var node = new SpecNode(SpecNodeType.Arrange, "description", null);
@@ -106,7 +106,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 {
-                    { SpecNodeType.When, new SpecStructureRule(null, null) }
+                    { SpecNodeType.When, new SpecStructureRule(null, null) },
                 });
 
             // Act
@@ -132,7 +132,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 {
-                    { SpecNodeType.When, new SpecStructureRule("^$", null) }
+                    { SpecNodeType.When, new SpecStructureRule("^$", null) },
                 });
 
             // Act
@@ -158,7 +158,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 {
-                    { SpecNodeType.When, new SpecStructureRule("^And", null) }
+                    { SpecNodeType.When, new SpecStructureRule("^And", null) },
                 });
 
             // Act
@@ -191,7 +191,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 {
-                    { SpecNodeType.When, new SpecStructureRule(null, "^$") }
+                    { SpecNodeType.When, new SpecStructureRule(null, "^$") },
                 });
 
             // Act
@@ -217,7 +217,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 {
-                    { SpecNodeType.When, new SpecStructureRule(null, "^And") }
+                    { SpecNodeType.When, new SpecStructureRule(null, "^And") },
                 });
 
             // Act
