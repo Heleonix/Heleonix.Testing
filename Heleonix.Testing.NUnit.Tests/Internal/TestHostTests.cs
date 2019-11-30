@@ -97,8 +97,34 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         /// <summary>
         /// Tests the validation of adding new nodes.
         /// </summary>
-        [Test(Description = "When there are no rules Should succeed")]
+        [Test(Description = "When an absent node type is passed Should fail")]
         public static void ValidateAdding1()
+        {
+            // Arrange
+            var testHostMock = new Mock<TestHost>();
+
+            testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
+                .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
+                {
+                    { SpecNodeType.When, new SpecStructureRule(null, null) },
+                });
+
+            // Act
+            var methodInfo = testHostMock.Object.GetType().BaseType.GetMethod(
+                "ValidateAdding", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            // Assert
+            Assert.Throws<TargetInvocationException>(() =>
+            {
+                methodInfo.Invoke(testHostMock.Object, new[] { new SpecNode(SpecNodeType.Arrange, null, null) });
+            });
+        }
+
+        /// <summary>
+        /// Tests the validation of adding new nodes.
+        /// </summary>
+        [Test(Description = "When there are no rules Should succeed")]
+        public static void ValidateAdding2()
         {
             // Arrange
             var testHostMock = new Mock<TestHost>();
@@ -124,7 +150,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         /// Tests the validation of adding new nodes.
         /// </summary>
         [Test(Description = "When there is a passing specExecutionStackRule Should succeed")]
-        public static void ValidateAdding2()
+        public static void ValidateAdding3()
         {
             // Arrange
             var testHostMock = new Mock<TestHost>();
@@ -150,7 +176,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         /// Tests the validation of adding new nodes.
         /// </summary>
         [Test(Description = "When there is a failing specExecutionStackRule Should throw the InvalidOperationException")]
-        public static void ValidateAdding3()
+        public static void ValidateAdding4()
         {
             // Arrange
             var testHostMock = new Mock<TestHost>();
@@ -183,7 +209,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         /// Tests the validation of adding new nodes.
         /// </summary>
         [Test(Description = "When there is a passing predecessorsRule Should succeed")]
-        public static void ValidateAdding4()
+        public static void ValidateAdding5()
         {
             // Arrange
             var testHostMock = new Mock<TestHost>();
@@ -209,7 +235,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         /// Tests the validation of adding new nodes.
         /// </summary>
         [Test(Description = "When there is a failing predecessorsRule Should throw the InvalidOperationException")]
-        public static void ValidateAdding5()
+        public static void ValidateAdding6()
         {
             // Arrange
             var testHostMock = new Mock<TestHost>();
