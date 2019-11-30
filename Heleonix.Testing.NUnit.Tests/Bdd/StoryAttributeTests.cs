@@ -51,9 +51,9 @@ namespace Heleonix.Testing.NUnit.Aaa
 
             // Assert
             Assert.That(properties.Count, Is.EqualTo(3));
-            Assert.That(properties[nameof(StoryAttribute.AsA)], Is.EqualTo("As A PO"));
-            Assert.That(properties[nameof(StoryAttribute.IWant)], Is.EqualTo("I Want Everything"));
-            Assert.That(properties[nameof(StoryAttribute.SoThat)], Is.EqualTo("So That I'm ok"));
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.AsA)], Is.EqualTo("As A PO"));
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.IWant)], Is.EqualTo("I Want Everything"));
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.SoThat)], Is.EqualTo("So That I'm ok"));
         }
     }
 }
