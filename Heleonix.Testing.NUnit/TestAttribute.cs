@@ -43,11 +43,6 @@ namespace Heleonix.Testing.NUnit
                 }
             }
 
-            foreach (var prop in this.Properties)
-            {
-                testMethod.Properties.Add(prop.Key, prop.Value);
-            }
-
             return testMethod;
         }
     }

@@ -10,6 +10,7 @@ namespace Heleonix.Testing.NUnit.Aaa
     using global::NUnit.Framework;
     using global::NUnit.Framework.Internal;
     using Heleonix.Testing.NUnit.Bdd;
+    using Heleonix.Testing.NUnit.Tests.Common;
 
     /// <summary>
     /// Tests the <see cref="StoryAttribute"/>.
@@ -54,6 +55,26 @@ namespace Heleonix.Testing.NUnit.Aaa
             Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.AsA)], Is.EqualTo("As A PO"));
             Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.IWant)], Is.EqualTo("I Want Everything"));
             Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.SoThat)], Is.EqualTo("So That I'm ok"));
+        }
+
+        /// <summary>
+        /// Tests the <see cref="FixtureAttribute.ApplyToTest"/>.
+        /// </summary>
+        [Test(Description = "When the attribute has some properties Should add properties to the passedd test")]
+        public static void ApplyToTest()
+        {
+            // Arrange
+            var attribute = new StoryAttribute { AsA = "PO", IWant = "Everything", SoThat = "I'm ok" };
+            var test = new DummyTest("test");
+
+            // Act
+            attribute.ApplyToTest(test);
+
+            // Assert
+            Assert.That(test.Properties.Keys.Count, Is.EqualTo(3));
+            Assert.That(test.Properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.AsA)][0], Is.EqualTo("As A PO"));
+            Assert.That(test.Properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.IWant)][0], Is.EqualTo("I Want Everything"));
+            Assert.That(test.Properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.SoThat)][0], Is.EqualTo("So That I'm ok"));
         }
     }
 }

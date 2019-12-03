@@ -9,6 +9,8 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
     using System.Collections.Generic;
     using System.Reflection;
     using global::NUnit.Framework;
+    using Heleonix.Testing.NUnit.Bdd;
+    using Heleonix.Testing.NUnit.Bdd.Internal;
     using Heleonix.Testing.NUnit.Internal;
     using Moq;
     using Moq.Protected;
@@ -262,6 +264,27 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
                     throw e.InnerException;
                 }
             });
+        }
+
+        /// <summary>
+        /// Tests the <see cref="TestHost.Execute(SpecNode)"/>.
+        /// </summary>
+        [Test(Description = "When properties are not written to output Should write properties to the output")]
+        public static void Execute()
+        {
+            // Arrange
+            var rootNode = new SpecNode(SpecNodeType.Given, "given", () => { });
+            var childNode = new SpecNode(SpecNodeType.When, "when", () => { });
+            rootNode.Add(childNode);
+            TestContext.CurrentContext.Test.Properties.Add("Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.AsA), "As a PO");
+
+            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, new BddTestHost());
+
+            // Act
+            TestHost.Current.Execute(childNode);
+
+            // Assert
+            Assert.That(TestContext.CurrentContext.Test.Properties["Heleonix.Testing.NUnit.Internal." + nameof(TestProperties.IsOutputWritten)][0], Is.True);
         }
     }
 }
