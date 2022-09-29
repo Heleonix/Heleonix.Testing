@@ -1,13 +1,13 @@
 <Project>
   <PropertyGroup>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
     <PackageReleaseNotes>Set NUnit dependency as runtime</PackageReleaseNotes>
 
     <Description>The library for writing tests in BDD and AAA styles</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
 
     <Authors>Heleonix - Hennadii Lutsyshyn</Authors>
-    <Copyright>Copyright (c) 2018-present Heleonix - Hennadii Lutsyshyn</Copyright>
+    <Copyright>Copyright (c) Heleonix - Hennadii Lutsyshyn</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
     <RepositoryType>git</RepositoryType>

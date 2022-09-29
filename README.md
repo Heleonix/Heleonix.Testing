@@ -6,7 +6,7 @@ https://www.nuget.org/packages/Heleonix.Testing.NUnit
 
 ## AAA: Arrange Act Assert
 
-#### Structure
+### Structure
 ```csharp
 using Heleonix.Testing.NUnit.Aaa;
 using static Heleonix.Testing.NUnit.Aaa.AaaSpec;
@@ -133,12 +133,12 @@ public static class MyComponentTests
 }
 ```
 
-#### Tests Output
+### Tests Output
 ![AAA](Docs/images/AAA.png)
 
 ## BDD: Behavior Driven Development
 
-#### Structure
+### Structure
 ```csharp
 using Heleonix.Testing.NUnit.Bdd;
 using static Heleonix.Testing.NUnit.Bdd.BddSpec;
@@ -233,5 +233,5 @@ public static class TheCoolStory
 }
 ```
 
-#### Tests Output
+### Tests Output
 ![BDD](Docs/images/BDD.png)

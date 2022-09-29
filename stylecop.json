@@ -9,11 +9,10 @@
   "settings": {
     "documentationRules": {
       "companyName": "Heleonix - Hennadii Lutsyshyn",
-      "copyrightText": "Copyright (c) {year}-present {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the repository root for full license information.",
+      "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseFile} file in the repository root for full license information.",
       "variables": {
         "licenseName": "MIT",
-        "licenseFile": "LICENSE",
-        "year": "2018"
+        "licenseFile": "LICENSE"
       }
     }
   }
