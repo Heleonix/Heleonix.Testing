@@ -9,7 +9,7 @@ namespace Heleonix.Testing.NUnit.Internal
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using global::NUnit.Framework;
+    using global::NUnit.Framework.Internal;
 
     /// <summary>
     /// Represents a base test host to be implemented by implementations of different tests patterns.
@@ -25,7 +25,7 @@ namespace Heleonix.Testing.NUnit.Internal
         /// <value>
         /// The current instance of the <see cref="TestHost"/>.
         /// </value>
-        public static TestHost Current => TestProperties.GetTestHost(TestContext.CurrentContext.Test.Properties);
+        public static TestHost Current => TestPropertiesHelper.GetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties);
 
         /// <summary>
         /// Gets the spec structure rules.
@@ -63,21 +63,9 @@ namespace Heleonix.Testing.NUnit.Internal
         /// <param name="node">The node.</param>
         public void Execute(SpecNode node)
         {
-            var properties = TestContext.CurrentContext.Test.Properties;
-
-            if (!TestProperties.IsOutputWritten(properties))
+            if (!node.IsAssertable && !string.IsNullOrEmpty(node.Description))
             {
-                foreach (var prop in TestProperties.GetOutput(properties))
-                {
-                    TestContext.WriteLine(prop);
-                }
-
-                TestProperties.SetIsOutputWritten(properties);
-            }
-
-            if (!string.IsNullOrEmpty(node.Description))
-            {
-                TestContext.WriteLine($"{new string(' ', node.NestingLevel * 4)}{node.Description}");
+                TestExecutionContext.CurrentContext.OutWriter.WriteLine($"{new string(' ', node.NestingLevel * 4)}{node.Description}");
             }
 
             this.specExecutionStack.Push(node);
@@ -85,6 +73,22 @@ namespace Heleonix.Testing.NUnit.Internal
             try
             {
                 node.Action();
+
+                if (node.IsAssertable)
+                {
+                    TestExecutionContext.CurrentContext.OutWriter.WriteLine($"{new string(' ', node.NestingLevel * 4)}\u2713 {node.Description}");
+                }
+            }
+            catch (Exception)
+            {
+                if (node.IsAssertable)
+                {
+                    TestExecutionContext.CurrentContext.OutWriter.WriteLine($"{new string(' ', node.NestingLevel * 4)}\u2717 {node.Description}");
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {

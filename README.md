@@ -8,6 +8,7 @@ https://www.nuget.org/packages/Heleonix.Testing.NUnit
 
 ### Structure
 ```csharp
+using global::NUnit.Framework;
 using Heleonix.Testing.NUnit.Aaa;
 using static Heleonix.Testing.NUnit.Aaa.AaaSpec;
 
@@ -108,6 +109,7 @@ public static class MyComponentTests
 
             Should("lead to the result #1", () =>
             {
+                Assert.Fail();
             });
 
             And("the condition #1 is true", () =>
@@ -140,10 +142,14 @@ public static class MyComponentTests
 
 ### Structure
 ```csharp
+using global::NUnit.Framework;
 using Heleonix.Testing.NUnit.Bdd;
 using static Heleonix.Testing.NUnit.Bdd.BddSpec;
 
-[Feature(Name = "Feature")]
+/// <summary>
+/// Tests the TheCoolStory.
+/// </summary>
+[Feature(Name = "The Cool Feature")]
 OR
 [Story(
     Id = "111",
@@ -153,76 +159,55 @@ OR
     SoThat = "I earn a lot of money")]
 public static class TheCoolStory
 {
-    [Scenario(Name = "Earn a lot of money")]
+    /// <summary>
+    /// Tests the Scenario.
+    /// </summary>
+    [Scenario(Name = "Earn a lot of money in the story")]
     public static void Scenario()
     {
         Given("the precondition #1", () =>
         {
-            SetupEach(() => { });
-
             BeforeEach(() => { });
 
             AfterEach(() => { });
 
-            CleanupEach(() => { });
-
             When("the action #1 is executed", () =>
             {
-                SetupEach(() => { });
-
                 BeforeEach(() => { });
 
                 AfterEach(() => { });
-
-                CleanupEach(() => { });
 
                 Then("the result #1 happens", () => { });
 
                 And("the condition #1 is true", () =>
                 {
-                    SetupEach(() => { });
-
                     BeforeEach(() => { });
 
                     AfterEach(() => { });
 
-                    CleanupEach(() => { });
-
-                    Then("the result #2 happens", () => { });
+                    Then("the result #2 happens", () => { Assert.Fail(); });
                 });
             });
 
             And("condition #2 is true", () =>
             {
-                SetupEach(() => { });
-
                 BeforeEach(() => { });
 
                 AfterEach(() => { });
 
-                CleanupEach(() => { });
-
                 When("the action #2 is executed", () =>
                 {
-                    SetupEach(() => { });
-
                     BeforeEach(() => { });
 
                     AfterEach(() => { });
-
-                    CleanupEach(() => { });
 
                     Then("the result #3 happens", () => { });
 
                     And("the condition #3 is true", () =>
                     {
-                        SetupEach(() => { });
-
                         BeforeEach(() => { });
 
                         AfterEach(() => { });
-
-                        CleanupEach(() => { });
 
                         Then("the result #4 happens", () => { });
                     });

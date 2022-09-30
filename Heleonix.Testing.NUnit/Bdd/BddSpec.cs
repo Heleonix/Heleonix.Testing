@@ -51,17 +51,6 @@ namespace Heleonix.Testing.NUnit.Bdd
         }
 
         /// <summary>
-        /// Builds the 'CleanupEach' step of the test.
-        /// </summary>
-        /// <param name="action">The action.</param>
-        public static void CleanupEach(Action action)
-        {
-            var node = new SpecNode(SpecNodeType.CleanupEach, null, action);
-
-            TestHost.Current.Add(node);
-        }
-
-        /// <summary>
         /// Builds the 'Given' step of the test.
         /// </summary>
         /// <param name="description">The description.</param>
@@ -76,24 +65,13 @@ namespace Heleonix.Testing.NUnit.Bdd
         }
 
         /// <summary>
-        /// Builds the 'SetupEach' step of the test.
-        /// </summary>
-        /// <param name="action">The action.</param>
-        public static void SetupEach(Action action)
-        {
-            var node = new SpecNode(SpecNodeType.SetupEach, null, action);
-
-            TestHost.Current.Add(node);
-        }
-
-        /// <summary>
         /// Builds the 'Then' step of the test.
         /// </summary>
         /// <param name="description">The description.</param>
         /// <param name="action">The action.</param>
         public static void Then(string description, Action action)
         {
-            var node = new SpecNode(SpecNodeType.Then, $"Then {description}", action);
+            var node = new SpecNode(SpecNodeType.Then, $"Then {description}", action, true);
 
             TestHost.Current.Add(node);
 
@@ -106,17 +84,6 @@ namespace Heleonix.Testing.NUnit.Bdd
                 parents.Push(currentParent);
 
                 currentParent = currentParent.Parent;
-            }
-
-            foreach (var parent in parents)
-            {
-                foreach (var child in parent.Children)
-                {
-                    if (child.Type == SpecNodeType.SetupEach)
-                    {
-                        TestHost.Current.Execute(child);
-                    }
-                }
             }
 
             foreach (var parent in parents)
@@ -137,17 +104,6 @@ namespace Heleonix.Testing.NUnit.Bdd
                 foreach (var child in parent.Children)
                 {
                     if (child.Type == SpecNodeType.AfterEach)
-                    {
-                        TestHost.Current.Execute(child);
-                    }
-                }
-            }
-
-            foreach (var parent in parents)
-            {
-                foreach (var child in parent.Children)
-                {
-                    if (child.Type == SpecNodeType.CleanupEach)
                     {
                         TestHost.Current.Execute(child);
                     }

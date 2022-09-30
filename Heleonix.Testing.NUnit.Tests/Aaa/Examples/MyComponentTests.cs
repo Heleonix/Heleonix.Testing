@@ -5,6 +5,7 @@
 
 namespace Heleonix.Testing.NUnit.Tests.Aaa.Examples
 {
+    using global::NUnit.Framework;
     using Heleonix.Testing.NUnit.Aaa;
     using static Heleonix.Testing.NUnit.Aaa.AaaSpec;
 

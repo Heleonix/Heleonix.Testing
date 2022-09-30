@@ -5,6 +5,7 @@
 
 namespace Heleonix.Testing.NUnit
 {
+    using System;
     using System.Collections.Generic;
     using global::NUnit.Framework;
     using global::NUnit.Framework.Interfaces;
@@ -17,7 +18,7 @@ namespace Heleonix.Testing.NUnit
     /// <seealso cref="BaseAttribute" />
     /// <seealso cref="IFixtureBuilder" />
     /// <seealso cref="IApplyToTest" />
-    public abstract class FixtureAttribute : BaseAttribute, IFixtureBuilder, IApplyToTest
+    public abstract class FixtureAttribute : BaseAttribute, IFixtureBuilder2, IApplyToTest
     {
         private readonly NUnitTestFixtureBuilder builder = new NUnitTestFixtureBuilder();
 
@@ -47,6 +48,15 @@ namespace Heleonix.Testing.NUnit
         /// A TestSuite object or one derived from TestSuite.
         /// </returns>
         public virtual IEnumerable<TestSuite> BuildFrom(ITypeInfo typeInfo) =>
-            new[] { this.builder.BuildFrom(typeInfo, new TestFixtureData { TestName = this.TestName }) };
+            throw new NotImplementedException("This method is replaced with the one from IFixtureBuilder2.");
+
+        /// <summary>
+        /// Builds any number of test fixtures from the specified type.
+        /// </summary>
+        /// <param name="typeInfo">The type info of the fixture to be used.</param>
+        /// <param name="filter">PreFilter to be used to select methods.</param>
+        /// <returns>A list of test suites.</returns>
+        public IEnumerable<TestSuite> BuildFrom(ITypeInfo typeInfo, IPreFilter filter) =>
+            new[] { this.builder.BuildFrom(typeInfo, filter, new TestFixtureData { TestName = this.TestName }) };
     }
 }

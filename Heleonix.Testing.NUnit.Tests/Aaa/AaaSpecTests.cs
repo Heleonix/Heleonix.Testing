@@ -34,7 +34,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 AaaSpec.Act(action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -70,7 +70,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 AaaSpec.And("description", action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -103,7 +103,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 AaaSpec.Arrange(action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -157,7 +157,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 });
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -198,7 +198,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 AaaSpec.Teardown(action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -231,7 +231,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
             };
             var siblingNode = new SpecNode(SpecNodeType.Arrange, null, () => { });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(siblingNode);
 

@@ -34,7 +34,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 BddSpec.AfterEach(action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -70,7 +70,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 BddSpec.And("description", action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -103,7 +103,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 BddSpec.BeforeEach(action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -115,38 +115,6 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
 
             Assert.That(node.Action, Is.EqualTo(action));
             Assert.That(node.Type, Is.EqualTo(SpecNodeType.BeforeEach));
-            Assert.That(node.Description, Is.Null);
-            Assert.That(node.NestingLevel, Is.EqualTo(1));
-            Assert.That(node.Parent, Is.EqualTo(parentNode));
-        }
-
-        /// <summary>
-        /// Tests the <see cref="BddSpec.CleanupEach(Action)"/>.
-        /// </summary>
-        [Test(Description = "Should add the spec to the parent node")]
-        public static void CleanupEach()
-        {
-            // Arrange
-            var host = new BddTestHost();
-            Action action = () => { };
-            var parentNode = new SpecNode(SpecNodeType.Given, null, () =>
-            {
-                // Act
-                BddSpec.CleanupEach(action);
-            });
-
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
-
-            host.Add(parentNode);
-
-            // Act
-            host.Execute(parentNode);
-
-            // Assert
-            var node = parentNode.Children.First();
-
-            Assert.That(node.Action, Is.EqualTo(action));
-            Assert.That(node.Type, Is.EqualTo(SpecNodeType.CleanupEach));
             Assert.That(node.Description, Is.Null);
             Assert.That(node.NestingLevel, Is.EqualTo(1));
             Assert.That(node.Parent, Is.EqualTo(parentNode));
@@ -168,7 +136,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
             };
             var siblingNode = new SpecNode(SpecNodeType.Given, null, () => { });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(siblingNode);
 
@@ -188,38 +156,6 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
             Assert.That(node.Description, Is.EqualTo("Given description"));
             Assert.That(node.NestingLevel, Is.EqualTo(0));
             Assert.That(node.Parent, Is.EqualTo(rootNode));
-        }
-
-        /// <summary>
-        /// Tests the <see cref="BddSpec.SetupEach(Action)"/>.
-        /// </summary>
-        [Test(Description = "Should add the spec to the parent node")]
-        public static void SetupEach()
-        {
-            // Arrange
-            var host = new BddTestHost();
-            Action action = () => { };
-            var parentNode = new SpecNode(SpecNodeType.Given, null, () =>
-            {
-                // Act
-                BddSpec.SetupEach(action);
-            });
-
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
-
-            host.Add(parentNode);
-
-            // Act
-            host.Execute(parentNode);
-
-            // Assert
-            var node = parentNode.Children.First();
-
-            Assert.That(node.Action, Is.EqualTo(action));
-            Assert.That(node.Type, Is.EqualTo(SpecNodeType.SetupEach));
-            Assert.That(node.Description, Is.Null);
-            Assert.That(node.NestingLevel, Is.EqualTo(1));
-            Assert.That(node.Parent, Is.EqualTo(parentNode));
         }
 
         /// <summary>
@@ -244,25 +180,17 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 {
                     executionStack.Push(SpecNodeType.When);
 
-                    BddSpec.SetupEach(() => { executionStack.Push(SpecNodeType.SetupEach); });
-
                     BddSpec.BeforeEach(() => { executionStack.Push(SpecNodeType.BeforeEach); });
 
                     BddSpec.AfterEach(() => { executionStack.Push(SpecNodeType.AfterEach); });
-
-                    BddSpec.CleanupEach(() => { executionStack.Push(SpecNodeType.CleanupEach); });
 
                     BddSpec.And(null, () =>
                     {
                         executionStack.Push(SpecNodeType.And);
 
-                        BddSpec.SetupEach(() => { executionStack.Push(SpecNodeType.SetupEach); });
-
                         BddSpec.BeforeEach(() => { executionStack.Push(SpecNodeType.BeforeEach); });
 
                         BddSpec.AfterEach(() => { executionStack.Push(SpecNodeType.AfterEach); });
-
-                        BddSpec.CleanupEach(() => { executionStack.Push(SpecNodeType.CleanupEach); });
 
                         // Act
                         BddSpec.Then("description", action);
@@ -270,7 +198,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 });
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -288,14 +216,10 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
             Assert.That(node.Parent.Type, Is.EqualTo(SpecNodeType.And));
             Assert.That(node.Parent.Parent.Parent, Is.EqualTo(parentNode));
 
-            Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.CleanupEach));
-            Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.CleanupEach));
             Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.AfterEach));
             Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.AfterEach));
             Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.BeforeEach));
             Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.BeforeEach));
-            Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.SetupEach));
-            Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.SetupEach));
             Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.And));
             Assert.That(executionStack.Pop(), Is.EqualTo(SpecNodeType.When));
         }
@@ -315,7 +239,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
                 BddSpec.When("description", action);
             });
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, host);
+            TestPropertiesHelper.SetTestHost(TestExecutionContext.CurrentContext.CurrentTest.Properties, host);
 
             host.Add(parentNode);
 
@@ -340,35 +264,23 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         {
             BddSpec.Given("Given 1", () =>
             {
-                BddSpec.SetupEach(() => { });
-
                 BddSpec.BeforeEach(() => { });
 
                 BddSpec.AfterEach(() => { });
 
-                BddSpec.CleanupEach(() => { });
-
                 BddSpec.When("When 1", () =>
                 {
-                    BddSpec.SetupEach(() => { });
-
                     BddSpec.BeforeEach(() => { });
 
                     BddSpec.AfterEach(() => { });
-
-                    BddSpec.CleanupEach(() => { });
 
                     BddSpec.Then("Then 1", () => { });
 
                     BddSpec.And("And 1", () =>
                     {
-                        BddSpec.SetupEach(() => { });
-
                         BddSpec.BeforeEach(() => { });
 
                         BddSpec.AfterEach(() => { });
-
-                        BddSpec.CleanupEach(() => { });
 
                         BddSpec.Then("Then 2", () => { });
                     });
@@ -376,35 +288,23 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
 
                 BddSpec.And("And 2", () =>
                 {
-                    BddSpec.SetupEach(() => { });
-
                     BddSpec.BeforeEach(() => { });
 
                     BddSpec.AfterEach(() => { });
 
-                    BddSpec.CleanupEach(() => { });
-
                     BddSpec.When("When 2", () =>
                     {
-                        BddSpec.SetupEach(() => { });
-
                         BddSpec.BeforeEach(() => { });
 
                         BddSpec.AfterEach(() => { });
-
-                        BddSpec.CleanupEach(() => { });
 
                         BddSpec.Then("Then 3", () => { });
 
                         BddSpec.And("And 3", () =>
                         {
-                            BddSpec.SetupEach(() => { });
-
                             BddSpec.BeforeEach(() => { });
 
                             BddSpec.AfterEach(() => { });
-
-                            BddSpec.CleanupEach(() => { });
 
                             BddSpec.Then("Then 4", () => { });
                         });

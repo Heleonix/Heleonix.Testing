@@ -41,25 +41,19 @@ namespace Heleonix.Testing.NUnit.Tests.Bdd.Internal
             Assert.That(rules[SpecNodeType.Given].PredecessorsRule, Is.EqualTo("^$"));
 
             Assert.That(rules[SpecNodeType.When].SpecExecutionStackRule, Is.EqualTo("^(Given)|^(And)"));
-            Assert.That(rules[SpecNodeType.When].PredecessorsRule, Is.EqualTo("^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^(Then)|^(And)|^$"));
+            Assert.That(rules[SpecNodeType.When].PredecessorsRule, Is.EqualTo("^(BeforeEach)|^(AfterEach)|^(Then)|^(And)|^$"));
 
             Assert.That(rules[SpecNodeType.Then].SpecExecutionStackRule, Is.EqualTo("^(When)|^(And)"));
-            Assert.That(rules[SpecNodeType.Then].PredecessorsRule, Is.EqualTo("^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^$"));
+            Assert.That(rules[SpecNodeType.Then].PredecessorsRule, Is.EqualTo("^(BeforeEach)|^(AfterEach)|^$"));
 
             Assert.That(rules[SpecNodeType.And].SpecExecutionStackRule, Is.EqualTo("^(And,)*(Given)|(When)"));
-            Assert.That(rules[SpecNodeType.And].PredecessorsRule, Is.EqualTo("^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^(When)|^(Then)|^(And)|^$"));
-
-            Assert.That(rules[SpecNodeType.SetupEach].SpecExecutionStackRule, Is.EqualTo("^(Given)|^(When)|^(And)"));
-            Assert.That(rules[SpecNodeType.SetupEach].PredecessorsRule, Is.EqualTo("^$"));
+            Assert.That(rules[SpecNodeType.And].PredecessorsRule, Is.EqualTo("^(BeforeEach)|^(AfterEach)|^(When)|^(Then)|^(And)|^$"));
 
             Assert.That(rules[SpecNodeType.BeforeEach].SpecExecutionStackRule, Is.EqualTo("^(Given)|^(When)|^(And)"));
-            Assert.That(rules[SpecNodeType.BeforeEach].PredecessorsRule, Is.EqualTo("^(SetupEach)|^$"));
+            Assert.That(rules[SpecNodeType.BeforeEach].PredecessorsRule, Is.EqualTo("^$"));
 
             Assert.That(rules[SpecNodeType.AfterEach].SpecExecutionStackRule, Is.EqualTo("^(Given)|^(When)|^(And)"));
-            Assert.That(rules[SpecNodeType.AfterEach].PredecessorsRule, Is.EqualTo("^(SetupEach)|^(BeforeEach)|^$"));
-
-            Assert.That(rules[SpecNodeType.CleanupEach].SpecExecutionStackRule, Is.EqualTo("^(Given)|^(When)|^(And)"));
-            Assert.That(rules[SpecNodeType.CleanupEach].PredecessorsRule, Is.EqualTo("^(SetupEach)|^(BeforeEach)|^(AfterEach)|^$"));
+            Assert.That(rules[SpecNodeType.AfterEach].PredecessorsRule, Is.EqualTo("^(BeforeEach)|^$"));
         }
     }
 }

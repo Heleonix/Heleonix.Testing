@@ -68,9 +68,9 @@ namespace Heleonix.Testing.NUnit.Bdd
             {
                 return new Dictionary<string, object>
                 {
-                    { TestProperties.OutputPropertyName(nameof(this.AsA)), $"As A {this.AsA}" },
-                    { TestProperties.OutputPropertyName(nameof(this.IWant)), $"I Want {this.IWant}" },
-                    { TestProperties.OutputPropertyName(nameof(this.SoThat)), $"So That {this.SoThat}" },
+                    { TestPropertiesHelper.OutputPropertyName(nameof(this.AsA)), $"As A {this.AsA}" },
+                    { TestPropertiesHelper.OutputPropertyName(nameof(this.IWant)), $"I Want {this.IWant}" },
+                    { TestPropertiesHelper.OutputPropertyName(nameof(this.SoThat)), $"So That {this.SoThat}" },
                 };
             }
         }

@@ -41,19 +41,9 @@ namespace Heleonix.Testing.NUnit.Internal
         Then,
 
         /// <summary>
-        /// The SetupEach.
-        /// </summary>
-        SetupEach,
-
-        /// <summary>
         /// The BeforeEach.
         /// </summary>
         BeforeEach,
-
-        /// <summary>
-        /// The CleanupEach.
-        /// </summary>
-        CleanupEach,
 
         /// <summary>
         /// The AfterEach.

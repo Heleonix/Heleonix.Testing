@@ -1,7 +1,12 @@
 <Project>
   <PropertyGroup>
-    <Version>1.5.0</Version>
-    <PackageReleaseNotes>Set NUnit dependency as runtime</PackageReleaseNotes>
+    <Version>2.0.0</Version>
+    <PackageReleaseNotes>
+      Target frameworks reduced to netstandard2.0;
+      Removed SetupEach and CleanupEash as duplications of BeforeEach and AfterEach;
+      Succeeded and failed assertions in AAA and BDD are now marked in output;
+      Failed tests now don't prevent execution of other tests.
+    </PackageReleaseNotes>
 
     <Description>The library for writing tests in BDD and AAA styles</Description>
     <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>

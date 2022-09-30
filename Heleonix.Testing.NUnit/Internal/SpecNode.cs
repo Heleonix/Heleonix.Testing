@@ -21,11 +21,13 @@ namespace Heleonix.Testing.NUnit.Internal
         /// <param name="type">The type.</param>
         /// <param name="description">The description.</param>
         /// <param name="action">The action.</param>
-        public SpecNode(SpecNodeType type, string description, Action action)
+        /// <param name="isAssertable">Defines if this node runs assertions, or not.</param>
+        public SpecNode(SpecNodeType type, string description, Action action, bool isAssertable = false)
         {
             this.Type = type;
             this.Description = description;
             this.Action = action;
+            this.IsAssertable = isAssertable;
             this.NestingLevel = -1;
         }
 
@@ -36,6 +38,11 @@ namespace Heleonix.Testing.NUnit.Internal
         /// The action.
         /// </value>
         public Action Action { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether if this node runs assertions, or not.
+        /// </summary>
+        public bool IsAssertable { get; private set; }
 
         /// <summary>
         /// Gets the children.

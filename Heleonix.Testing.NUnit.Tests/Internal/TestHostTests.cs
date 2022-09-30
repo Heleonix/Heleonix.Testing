@@ -9,11 +9,14 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
     using System.Collections.Generic;
     using System.Reflection;
     using global::NUnit.Framework;
+    using global::NUnit.Framework.Internal;
+    using Heleonix.Testing.NUnit.Aaa;
     using Heleonix.Testing.NUnit.Bdd;
     using Heleonix.Testing.NUnit.Bdd.Internal;
     using Heleonix.Testing.NUnit.Internal;
     using Moq;
     using Moq.Protected;
+    using static System.Collections.Specialized.BitVector32;
 
     /// <summary>
     /// Tests the <see cref="TestHost" />.
@@ -29,8 +32,8 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
             // Arrange
             var testHostMockObject = new Mock<TestHost>().Object;
 
-            TestContext.CurrentContext.Test.Properties.Add(
-                $"{typeof(TestProperties).Namespace}.{nameof(TestHost)}", testHostMockObject);
+            TestExecutionContext.CurrentContext.CurrentTest.Properties.Add(
+                $"{typeof(TestPropertiesHelper).Namespace}.{nameof(TestHost)}", testHostMockObject);
 
             // Assert
             Assert.That(TestHost.Current, Is.EqualTo(testHostMockObject));
@@ -49,8 +52,8 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
                 { { SpecNodeType.Arrange, new SpecStructureRule(null, null) } });
 
-            TestContext.CurrentContext.Test.Properties.Add(
-                $"{typeof(TestProperties).Namespace}.{nameof(TestHost)}", testHostMock.Object);
+            TestExecutionContext.CurrentContext.CurrentTest.Properties.Add(
+                $"{typeof(TestPropertiesHelper).Namespace}.{nameof(TestHost)}", testHostMock.Object);
 
             var node = new SpecNode(SpecNodeType.Arrange, "description", null);
 
@@ -83,8 +86,8 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
                 TestHost.Current.Add(node);
             });
 
-            TestContext.CurrentContext.Test.Properties.Add(
-                $"{typeof(TestProperties).Namespace}.{nameof(TestHost)}", testHostMock.Object);
+            TestExecutionContext.CurrentContext.CurrentTest.Properties.Add(
+                $"{typeof(TestPropertiesHelper).Namespace}.{nameof(TestHost)}", testHostMock.Object);
 
             // Act
             TestHost.Current.Add(parentNode);
@@ -267,24 +270,67 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         }
 
         /// <summary>
-        /// Tests the <see cref="TestHost.Execute(SpecNode)"/>.
+        /// Tests writing of a failed test with marking into the Output.
         /// </summary>
-        [Test(Description = "When properties are not written to output Should write properties to the output")]
-        public static void Execute()
+        [Test(Description = "When an assertable node is throwing an exception Should write the test description as failed into the output")]
+        public static void Execute1()
         {
             // Arrange
-            var rootNode = new SpecNode(SpecNodeType.Given, "given", () => { });
-            var childNode = new SpecNode(SpecNodeType.When, "when", () => { });
-            rootNode.Add(childNode);
-            TestContext.CurrentContext.Test.Properties.Add("Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.AsA), "As a PO");
+            var testHostMock = new Mock<TestHost>();
 
-            TestProperties.SetTestHost(TestContext.CurrentContext.Test.Properties, new BddTestHost());
+            testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
+                .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
+                {
+                    { SpecNodeType.When, new SpecStructureRule(null, "^And") },
+                });
+
+            var methodInfo = testHostMock.Object.GetType().BaseType.GetMethod(
+                "Execute", BindingFlags.Public | BindingFlags.Instance);
+
+            var rootNode = new SpecNode(SpecNodeType.Root, null, () => { });
+
+            var node = new SpecNode(SpecNodeType.Should, "description", () => { throw new InvalidOperationException(); }, true);
+
+            rootNode.Add(node);
 
             // Act
-            TestHost.Current.Execute(childNode);
+            methodInfo.Invoke(testHostMock.Object, new[] { node });
 
             // Assert
-            Assert.That(TestContext.CurrentContext.Test.Properties["Heleonix.Testing.NUnit.Internal." + nameof(TestProperties.IsOutputWritten)][0], Is.True);
+            // Cannot read the NUnit Output, so rely on the 100% test coverage.
+            Assert.True(true);
+        }
+
+        /// <summary>
+        /// Tests writing of a failed test with marking into the Output.
+        /// </summary>
+        [Test(Description = "When a not assertable node is throwing an exception Should throw an exception")]
+        public static void Execute2()
+        {
+            // Arrange
+            var testHostMock = new Mock<TestHost>();
+
+            var methodInfo = testHostMock.Object.GetType().BaseType.GetMethod("Execute", BindingFlags.Public | BindingFlags.Instance);
+
+            var rootNode = new SpecNode(SpecNodeType.Root, null, () => { });
+
+            var node = new SpecNode(SpecNodeType.Should, "description", () => { throw new InvalidOperationException(); }, false);
+
+            rootNode.Add(node);
+
+            // Act
+            // Assert
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                try
+                {
+                    methodInfo.Invoke(testHostMock.Object, new[] { node });
+                }
+                catch (TargetInvocationException ex)
+                {
+                    throw ex.InnerException;
+                }
+            });
         }
     }
 }

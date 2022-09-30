@@ -1,4 +1,4 @@
-﻿// <copyright file="TestProperties.cs" company="Heleonix - Hennadii Lutsyshyn">
+﻿// <copyright file="TestPropertiesHelper.cs" company="Heleonix - Hennadii Lutsyshyn">
 // Copyright (c) Heleonix - Hennadii Lutsyshyn. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the repository root for full license information.
 // </copyright>
@@ -12,15 +12,13 @@ namespace Heleonix.Testing.NUnit.Internal
     /// <summary>
     /// Represents the properties of the test and methods to work with the <see cref="IPropertyBag"/>.
     /// </summary>
-    internal static class TestProperties
+    internal static class TestPropertiesHelper
     {
-        private static readonly string Prefix = typeof(TestProperties).Namespace + ".";
+        private static readonly string Prefix = typeof(TestPropertiesHelper).Namespace + ".";
 
         private static readonly string OutputPrefix = Prefix + "Output.";
 
         private static readonly string TestHostName = PropertyName(nameof(TestHost));
-
-        private static readonly string IsOutputWrittenName = PropertyName(nameof(IsOutputWritten));
 
         /// <summary>
         /// Builds a name of an output property.
@@ -37,21 +35,6 @@ namespace Heleonix.Testing.NUnit.Internal
         public static object[] GetOutput(IPropertyBag properties) =>
             properties.Keys.Where(key => key.StartsWith(OutputPrefix, StringComparison.Ordinal))
                 .SelectMany(key => properties[key].OfType<object>()).ToArray();
-
-        /// <summary>
-        /// Determines whether output is written.
-        /// </summary>
-        /// <param name="properties">The properties.</param>
-        /// <returns>
-        ///   <c>true</c> if output has been written; otherwise, <c>false</c>.
-        /// </returns>
-        public static bool IsOutputWritten(IPropertyBag properties) => properties[IsOutputWrittenName].Contains(true);
-
-        /// <summary>
-        /// Sets <c>true</c> if output has been written; otherwise <c>false</c>.
-        /// </summary>
-        /// <param name="properties">The properties.</param>
-        public static void SetIsOutputWritten(IPropertyBag properties) => properties.Set(IsOutputWrittenName, true);
 
         /// <summary>
         /// Gets the test host.

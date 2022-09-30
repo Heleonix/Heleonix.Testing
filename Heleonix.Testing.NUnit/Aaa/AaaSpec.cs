@@ -57,7 +57,7 @@ namespace Heleonix.Testing.NUnit.Aaa
         /// <param name="action">The action.</param>
         public static void Should(string description, Action action)
         {
-            var node = new SpecNode(SpecNodeType.Should, $"Should {description}", action);
+            var node = new SpecNode(SpecNodeType.Should, $"Should {description}", action, true);
 
             TestHost.Current.Add(node);
 

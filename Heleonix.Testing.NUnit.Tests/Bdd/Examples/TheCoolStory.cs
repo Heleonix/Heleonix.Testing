@@ -5,6 +5,7 @@
 
 namespace Heleonix.Testing.NUnit.Tests.Bdd.Examples
 {
+    using global::NUnit.Framework;
     using Heleonix.Testing.NUnit.Bdd;
     using static Heleonix.Testing.NUnit.Bdd.BddSpec;
 
@@ -22,40 +23,28 @@ namespace Heleonix.Testing.NUnit.Tests.Bdd.Examples
         /// <summary>
         /// Tests the Scenario.
         /// </summary>
-        [Scenario(Name = "Earn a lot of money")]
+        [Scenario(Name = "Earn a lot of money in the story")]
         public static void Scenario()
         {
             Given("the precondition #1", () =>
             {
-                SetupEach(() => { });
-
                 BeforeEach(() => { });
 
                 AfterEach(() => { });
 
-                CleanupEach(() => { });
-
                 When("the action #1 is executed", () =>
                 {
-                    SetupEach(() => { });
-
                     BeforeEach(() => { });
 
                     AfterEach(() => { });
-
-                    CleanupEach(() => { });
 
                     Then("the result #1 happens", () => { });
 
                     And("the condition #1 is true", () =>
                     {
-                        SetupEach(() => { });
-
                         BeforeEach(() => { });
 
                         AfterEach(() => { });
-
-                        CleanupEach(() => { });
 
                         Then("the result #2 happens", () => { });
                     });
@@ -63,35 +52,23 @@ namespace Heleonix.Testing.NUnit.Tests.Bdd.Examples
 
                 And("condition #2 is true", () =>
                 {
-                    SetupEach(() => { });
-
                     BeforeEach(() => { });
 
                     AfterEach(() => { });
 
-                    CleanupEach(() => { });
-
                     When("the action #2 is executed", () =>
                     {
-                        SetupEach(() => { });
-
                         BeforeEach(() => { });
 
                         AfterEach(() => { });
-
-                        CleanupEach(() => { });
 
                         Then("the result #3 happens", () => { });
 
                         And("the condition #3 is true", () =>
                         {
-                            SetupEach(() => { });
-
                             BeforeEach(() => { });
 
                             AfterEach(() => { });
-
-                            CleanupEach(() => { });
 
                             Then("the result #4 happens", () => { });
                         });

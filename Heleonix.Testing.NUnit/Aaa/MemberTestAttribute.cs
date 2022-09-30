@@ -44,7 +44,7 @@ namespace Heleonix.Testing.NUnit.Aaa
         {
             var testMethod = base.BuildFrom(method, suite);
 
-            TestProperties.SetTestHost(testMethod.Properties, new AaaTestHost());
+            TestPropertiesHelper.SetTestHost(testMethod.Properties, new AaaTestHost());
 
             return testMethod;
         }

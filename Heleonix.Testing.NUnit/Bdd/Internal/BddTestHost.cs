@@ -27,22 +27,20 @@ namespace Heleonix.Testing.NUnit.Bdd.Internal
                 {
                     SpecNodeType.When, new SpecStructureRule(
                         "^(Given)|^(And)",
-                        "^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^(Then)|^(And)|^$")
+                        "^(BeforeEach)|^(AfterEach)|^(Then)|^(And)|^$")
                 },
                 {
                     SpecNodeType.Then, new SpecStructureRule(
                         "^(When)|^(And)",
-                        "^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^$")
+                        "^(BeforeEach)|^(AfterEach)|^$")
                 },
                 {
                     SpecNodeType.And, new SpecStructureRule(
                         "^(And,)*(Given)|(When)",
-                        "^(SetupEach)|^(BeforeEach)|^(AfterEach)^|(CleanupEach)|^(When)|^(Then)|^(And)|^$")
+                        "^(BeforeEach)|^(AfterEach)|^(When)|^(Then)|^(And)|^$")
                 },
-                { SpecNodeType.SetupEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^$") },
-                { SpecNodeType.BeforeEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)|^$") },
-                { SpecNodeType.AfterEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)|^(BeforeEach)|^$") },
-                { SpecNodeType.CleanupEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(SetupEach)|^(BeforeEach)|^(AfterEach)|^$") },
+                { SpecNodeType.BeforeEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^$") },
+                { SpecNodeType.AfterEach, new SpecStructureRule("^(Given)|^(When)|^(And)", "^(BeforeEach)|^$") },
             };
     }
 }
