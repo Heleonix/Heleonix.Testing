@@ -1,31 +1,33 @@
 <Project>
   <PropertyGroup>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>
-      Target frameworks reduced to netstandard2.0;
-      Removed SetupEach and CleanupEash as duplications of BeforeEach and AfterEach;
-      Succeeded and failed assertions in AAA and BDD are now marked in output;
-      Failed tests now don't prevent execution of other tests.
-    </PackageReleaseNotes>
-
-    <Description>The library for writing tests in BDD and AAA styles</Description>
-    <PackageTags>Heleonix test nunit bdd behavior driven development tdd test driven development aaa arrange act assert</PackageTags>
-
+    <Version>2.0.1</Version>
     <Authors>Heleonix - Hennadii Lutsyshyn</Authors>
     <Copyright>Copyright (c) Heleonix - Hennadii Lutsyshyn</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/Heleonix/Heleonix.Testing/tree/master</RepositoryUrl>
-    <PackageLicenseUrl>https://github.com/Heleonix/Heleonix.Testing/tree/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Heleonix/Heleonix.Testing/tree/master</PackageProjectUrl>
     <PackageIconUrl>https://s.gravatar.com/avatar/22d1d9391b9f682a589d324d403ec0d8?s=256</PackageIconUrl>
 
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <IsPackable>true</IsPackable>
-    <DevelopmentDependency>true</DevelopmentDependency>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <IncludeSource>false</IncludeSource>
     <NoPackageAnalysis>true</NoPackageAnalysis>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 </Project>
