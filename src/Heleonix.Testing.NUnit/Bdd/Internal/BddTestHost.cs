@@ -6,6 +6,7 @@
 namespace Heleonix.Testing.NUnit.Bdd.Internal
 {
     using System.Collections.Generic;
+    using Heleonix.Testing.NUnit.Aaa.Internal;
     using Heleonix.Testing.NUnit.Internal;
 
     /// <summary>
@@ -14,6 +15,15 @@ namespace Heleonix.Testing.NUnit.Bdd.Internal
     /// <seealso cref="TestHost" />
     internal class BddTestHost : TestHost
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BddTestHost"/> class.
+        /// </summary>
+        /// <param name="rootNestingLevel">The root nesting level to start writing output at.</param>
+        public BddTestHost(int rootNestingLevel)
+            : base(rootNestingLevel)
+        {
+        }
+
         /// <summary>
         /// Gets the spec structure rules.
         /// </summary>

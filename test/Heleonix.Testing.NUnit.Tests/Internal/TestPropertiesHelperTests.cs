@@ -64,7 +64,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         {
             // Arrange
             var propertyBag = new PropertyBag();
-            var testHostMockObject = new Mock<TestHost>().Object;
+            var testHostMockObject = new Mock<TestHost>(new object[] { 0 }).Object;
 
             propertyBag.Add($"{typeof(TestPropertiesHelper).Namespace}.{nameof(TestHost)}", testHostMockObject);
 
@@ -83,7 +83,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         {
             // Arrange
             var propertyBag = new PropertyBag();
-            var testHostMockObject = new Mock<TestHost>().Object;
+            var testHostMockObject = new Mock<TestHost>(new object[] { 0 }).Object;
 
             // Act
             TestPropertiesHelper.SetTestHost(propertyBag, testHostMockObject);

@@ -11,6 +11,7 @@ namespace Heleonix.Testing.NUnit
     using global::NUnit.Framework.Interfaces;
     using global::NUnit.Framework.Internal;
     using global::NUnit.Framework.Internal.Builders;
+    using static System.Net.Mime.MediaTypeNames;
 
     /// <summary>
     /// Represents the base class for test fixture attributes.
@@ -18,23 +19,9 @@ namespace Heleonix.Testing.NUnit
     /// <seealso cref="BaseAttribute" />
     /// <seealso cref="IFixtureBuilder" />
     /// <seealso cref="IApplyToTest" />
-    public abstract class FixtureAttribute : BaseAttribute, IFixtureBuilder2, IApplyToTest
+    public abstract class FixtureAttribute : BaseAttribute, IFixtureBuilder2
     {
         private readonly NUnitTestFixtureBuilder builder = new NUnitTestFixtureBuilder();
-
-        /// <summary>
-        /// Modifies a test as defined for the specific attribute.
-        /// </summary>
-        /// <param name="test">The test to modify.</param>
-        public virtual void ApplyToTest(Test test)
-        {
-            foreach (var prop in this.Properties)
-            {
-#pragma warning disable CA1062 // Validate arguments of public methods
-                test.Properties.Add(prop.Key, prop.Value);
-#pragma warning restore CA1062 // Validate arguments of public methods
-            }
-        }
 
         /// <summary>
         /// Build one or more TestFixtures from type provided. At least one
@@ -56,7 +43,20 @@ namespace Heleonix.Testing.NUnit
         /// <param name="typeInfo">The type info of the fixture to be used.</param>
         /// <param name="filter">PreFilter to be used to select methods.</param>
         /// <returns>A list of test suites.</returns>
-        public IEnumerable<TestSuite> BuildFrom(ITypeInfo typeInfo, IPreFilter filter) =>
-            new[] { this.builder.BuildFrom(typeInfo, filter, new TestFixtureData { TestName = this.TestName }) };
+        public IEnumerable<TestSuite> BuildFrom(ITypeInfo typeInfo, IPreFilter filter)
+        {
+            var data = new TestFixtureData { TestName = this.TestName };
+
+            foreach (var prop in this.Properties)
+            {
+#pragma warning disable CA1062 // Validate arguments of public methods
+                data.Properties.Set(prop.Key, prop.Value);
+#pragma warning restore CA1062 // Validate arguments of public methods
+            }
+
+            var suite = this.builder.BuildFrom(typeInfo, filter, data);
+
+            return new[] { suite };
+        }
     }
 }

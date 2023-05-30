@@ -22,13 +22,14 @@ namespace Heleonix.Testing.NUnit.Internal
         /// <param name="description">The description.</param>
         /// <param name="action">The action.</param>
         /// <param name="isAssertable">Defines if this node runs assertions, or not.</param>
-        public SpecNode(SpecNodeType type, string description, Action action, bool isAssertable = false)
+        /// <param name="nestingLevel">The initial nesting level to write output at.</param>
+        public SpecNode(SpecNodeType type, string description, Action action, bool isAssertable = false, int nestingLevel = -1)
         {
             this.Type = type;
             this.Description = description;
             this.Action = action;
             this.IsAssertable = isAssertable;
-            this.NestingLevel = -1;
+            this.NestingLevel = nestingLevel;
         }
 
         /// <summary>

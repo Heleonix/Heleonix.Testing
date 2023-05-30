@@ -16,7 +16,7 @@ namespace Heleonix.Testing.NUnit.Aaa
     /// </summary>
     /// <seealso cref="TestAttribute" />
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    public sealed class MemberTestAttribute : TestAttribute
+    public sealed class MemberTestAttribute : TestAttribute, IApplyToContext
     {
         /// <summary>
         /// Gets or sets the name.
@@ -35,6 +35,35 @@ namespace Heleonix.Testing.NUnit.Aaa
         protected override string TestName => this.Name;
 
         /// <summary>
+        /// Gets the properties.
+        /// </summary>
+        /// <value>
+        /// The properties.
+        /// </value>
+        protected override IDictionary<string, object> Properties => new Dictionary<string, object>
+        {
+            { TestPropertiesHelper.OutputPropertyName(nameof(this.Name)), this.Name },
+        };
+
+        /// <inheritdoc/>
+        public void ApplyToContext(TestExecutionContext context)
+        {
+            var fixtureOutputProperties = TestPropertiesHelper.GetOutput(context.CurrentTest.Parent.Properties);
+
+            foreach (var prop in fixtureOutputProperties)
+            {
+                context.OutWriter.WriteLine(prop);
+            }
+
+            var testOutputProperties = TestPropertiesHelper.GetOutput(context.CurrentTest.Properties);
+
+            foreach (var prop in testOutputProperties)
+            {
+                context.OutWriter.WriteLine($"    {prop}");
+            }
+        }
+
+        /// <summary>
         /// Builds a test method.
         /// </summary>
         /// <param name="method">The method.</param>
@@ -44,7 +73,7 @@ namespace Heleonix.Testing.NUnit.Aaa
         {
             var testMethod = base.BuildFrom(method, suite);
 
-            TestPropertiesHelper.SetTestHost(testMethod.Properties, new AaaTestHost());
+            TestPropertiesHelper.SetTestHost(testMethod.Properties, new AaaTestHost(1));
 
             return testMethod;
         }

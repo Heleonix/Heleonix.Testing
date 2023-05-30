@@ -26,7 +26,8 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void AfterEach()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(-1);
+
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.Given, null, () =>
             {
@@ -58,7 +59,8 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void And()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(-1);
+
             var actionExecuted = false;
             Action action = () =>
             {
@@ -95,7 +97,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void BeforeEach()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(-1);
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.Given, null, () =>
             {
@@ -127,7 +129,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void Given()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(-1);
             SpecNode rootNode = null;
             var actionExecuted = false;
             Action action = () =>
@@ -165,7 +167,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void Then()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(-1);
             var actionExecuted = false;
             var executionStack = new Stack<SpecNodeType>();
             Action action = () =>
@@ -231,7 +233,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void When()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(-1);
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.Given, null, () =>
             {
