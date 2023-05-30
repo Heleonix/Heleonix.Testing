@@ -27,6 +27,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         {
             // Arrange
             var host = new BddTestHost(-1);
+
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.Given, null, () =>
             {
@@ -59,6 +60,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         {
             // Arrange
             var host = new BddTestHost(-1);
+
             var actionExecuted = false;
             Action action = () =>
             {
