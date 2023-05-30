@@ -24,7 +24,7 @@ namespace Heleonix.Testing.NUnit.Tests.Bdd.Internal
         public static void SpecStructureRules()
         {
             // Arrange
-            var host = new BddTestHost();
+            var host = new BddTestHost(0);
 
             // Act
             var rules = typeof(BddTestHost).InvokeMember(

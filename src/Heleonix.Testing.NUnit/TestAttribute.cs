@@ -28,10 +28,16 @@ namespace Heleonix.Testing.NUnit
         /// </returns>
         public virtual TestMethod BuildFrom(IMethodInfo method, Test suite)
         {
-            return this.builder.BuildTestMethod(
-                method,
-                suite,
-                new TestCaseParameters { TestName = this.TestName });
+            var parameters = new TestCaseParameters { TestName = this.TestName };
+
+            foreach (var prop in this.Properties)
+            {
+#pragma warning disable CA1062 // Validate arguments of public methods
+                parameters.Properties.Set(prop.Key, prop.Value);
+#pragma warning restore CA1062 // Validate arguments of public methods
+            }
+
+            return this.builder.BuildTestMethod(method, suite, parameters);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Heleonix.Testing.NUnit.Bdd
         {
             var testMethod = base.BuildFrom(method, suite);
 
-            TestPropertiesHelper.SetTestHost(testMethod.Properties, new BddTestHost());
+            TestPropertiesHelper.SetTestHost(testMethod.Properties, new BddTestHost(-1));
 
             return testMethod;
         }

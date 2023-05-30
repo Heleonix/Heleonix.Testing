@@ -24,7 +24,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa.Internal
         public static void SpecStructureRules()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(0);
 
             // Act
             var rules = typeof(AaaTestHost).InvokeMember(

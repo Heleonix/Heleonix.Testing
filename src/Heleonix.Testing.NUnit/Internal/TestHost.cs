@@ -8,6 +8,7 @@ namespace Heleonix.Testing.NUnit.Internal
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using System.Text.RegularExpressions;
     using global::NUnit.Framework.Internal;
 
@@ -16,8 +17,22 @@ namespace Heleonix.Testing.NUnit.Internal
     /// </summary>
     internal abstract class TestHost
     {
-        private readonly SpecNode root = new SpecNode(SpecNodeType.Root, null, null);
+        private readonly SpecNode root;
+
         private readonly Stack<SpecNode> specExecutionStack = new Stack<SpecNode>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestHost"/> class.
+        /// </summary>
+        /// <param name="rootNestingLevel">The root nesting level to start writing output.</param>
+#pragma warning disable CC0060 // Abstract class should not have public constructors.
+#pragma warning disable S3442
+        public TestHost(int rootNestingLevel)
+        {
+            this.root = new SpecNode(SpecNodeType.Root, null, null, false, rootNestingLevel);
+        }
+#pragma warning restore S3442
+#pragma warning restore CC0060 // Abstract class should not have public constructors.
 
         /// <summary>
         /// Gets the current instance of the <see cref="TestHost"/>.

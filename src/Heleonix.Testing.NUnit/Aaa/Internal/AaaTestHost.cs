@@ -15,6 +15,15 @@ namespace Heleonix.Testing.NUnit.Aaa.Internal
     internal class AaaTestHost : TestHost
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="AaaTestHost"/> class.
+        /// </summary>
+        /// <param name="rootNestingLevel">The root nesting level to start writing output at.</param>
+        public AaaTestHost(int rootNestingLevel)
+            : base(rootNestingLevel)
+        {
+        }
+
+        /// <summary>
         /// Gets the spec structure rules.
         /// </summary>
         /// <value>

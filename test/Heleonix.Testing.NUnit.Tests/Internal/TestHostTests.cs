@@ -30,7 +30,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void Current()
         {
             // Arrange
-            var testHostMockObject = new Mock<TestHost>().Object;
+            var testHostMockObject = new Mock<TestHost>(new object[] { 0 }).Object;
 
             TestExecutionContext.CurrentContext.CurrentTest.Properties.Add(
                 $"{typeof(TestPropertiesHelper).Namespace}.{nameof(TestHost)}", testHostMockObject);
@@ -46,7 +46,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void Add1()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -71,7 +71,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void Add2()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -106,7 +106,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void ValidateAdding1()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -132,7 +132,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void ValidateAdding2()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -158,7 +158,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void ValidateAdding3()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -184,7 +184,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void ValidateAdding4()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -217,7 +217,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void ValidateAdding5()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -243,7 +243,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void ValidateAdding6()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -276,7 +276,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void Execute1()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             testHostMock.Protected().SetupGet<IDictionary<SpecNodeType, SpecStructureRule>>("SpecStructureRules")
                 .Returns(new Dictionary<SpecNodeType, SpecStructureRule>
@@ -308,7 +308,7 @@ namespace Heleonix.Testing.NUnit.Tests.Internal
         public static void Execute2()
         {
             // Arrange
-            var testHostMock = new Mock<TestHost>();
+            var testHostMock = new Mock<TestHost>(new object[] { 0 });
 
             var methodInfo = testHostMock.Object.GetType().BaseType.GetMethod("Execute", BindingFlags.Public | BindingFlags.Instance);
 

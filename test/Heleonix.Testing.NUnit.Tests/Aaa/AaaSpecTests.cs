@@ -26,7 +26,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void Act()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(-1);
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.When, null, () =>
             {
@@ -58,7 +58,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void And()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(-1);
             var actionExecuted = false;
             Action action = () =>
             {
@@ -95,7 +95,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void Arrange()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(-1);
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.When, null, () =>
             {
@@ -127,7 +127,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void Should()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(-1);
             var actionExecuted = false;
             var executionStack = new Stack<SpecNodeType>();
             Action action = () =>
@@ -190,7 +190,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void Teardown()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(-1);
             Action action = () => { };
             var parentNode = new SpecNode(SpecNodeType.When, null, () =>
             {
@@ -222,7 +222,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
         public static void When()
         {
             // Arrange
-            var host = new AaaTestHost();
+            var host = new AaaTestHost(-1);
             SpecNode rootNode = null;
             var actionExecuted = false;
             Action action = () =>
