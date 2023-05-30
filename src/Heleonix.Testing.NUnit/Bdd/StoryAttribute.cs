@@ -62,18 +62,10 @@ namespace Heleonix.Testing.NUnit.Bdd
         /// <value>
         /// The properties.
         /// </value>
-        protected override IDictionary<string, object> Properties
+        protected override IDictionary<string, object> Properties => new Dictionary<string, object>
         {
-            get
-            {
-                return new Dictionary<string, object>
-                {
-                    { TestPropertiesHelper.OutputPropertyName(nameof(this.AsA)), $"As A {this.AsA}" },
-                    { TestPropertiesHelper.OutputPropertyName(nameof(this.IWant)), $"I Want {this.IWant}" },
-                    { TestPropertiesHelper.OutputPropertyName(nameof(this.SoThat)), $"So That {this.SoThat}" },
-                };
-            }
-        }
+            { TestPropertiesHelper.OutputPropertyName(nameof(this.TestName)), $"{this.TestName}" },
+        };
 
         /// <summary>
         /// Gets the name of the test.

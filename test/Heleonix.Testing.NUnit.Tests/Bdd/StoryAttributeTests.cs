@@ -42,7 +42,14 @@ namespace Heleonix.Testing.NUnit.Aaa
         public static void Properties()
         {
             // Arrange
-            var componentTestAttribute = new StoryAttribute { AsA = "PO", IWant = "Everything", SoThat = "I'm ok" };
+            var componentTestAttribute = new StoryAttribute
+            {
+                Id = "ID-1",
+                Summary = "Summary",
+                AsA = "PO",
+                IWant = "Everything",
+                SoThat = "I'm ok",
+            };
 
             // Act
             var properties = componentTestAttribute.GetType().GetProperty(
@@ -51,10 +58,8 @@ namespace Heleonix.Testing.NUnit.Aaa
                     as IDictionary<string, object>;
 
             // Assert
-            Assert.That(properties.Count, Is.EqualTo(3));
-            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.AsA)], Is.EqualTo("As A PO"));
-            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.IWant)], Is.EqualTo("I Want Everything"));
-            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output." + nameof(StoryAttribute.SoThat)], Is.EqualTo("So That I'm ok"));
+            Assert.That(properties.Count, Is.EqualTo(1));
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output.TestName"], Is.EqualTo("ID-1: Summary"));
         }
     }
 }

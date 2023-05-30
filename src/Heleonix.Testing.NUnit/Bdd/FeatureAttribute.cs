@@ -6,6 +6,7 @@
 namespace Heleonix.Testing.NUnit.Bdd
 {
     using System;
+    using Heleonix.Testing.NUnit.Internal;
 
     /// <summary>
     /// Marks a test fixture as a feature tests.
@@ -35,5 +36,16 @@ namespace Heleonix.Testing.NUnit.Bdd
                 return $"Feature: {this.Name}";
             }
         }
+
+        /// <summary>
+        /// Gets the properties.
+        /// </summary>
+        /// <value>
+        /// The properties.
+        /// </value>
+        protected override IDictionary<string, object> Properties => new Dictionary<string, object>
+        {
+            { TestPropertiesHelper.OutputPropertyName(nameof(this.TestName)), this.TestName },
+        };
     }
 }

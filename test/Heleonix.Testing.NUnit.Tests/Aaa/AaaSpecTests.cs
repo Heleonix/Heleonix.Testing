@@ -61,7 +61,7 @@ namespace Heleonix.Testing.NUnit.Tests.Aaa
             // Arrange
             var host = new AaaTestHost(-1);
             var actionExecuted = false;
-          
+
             Action action = () =>
             {
                 actionExecuted = true;
