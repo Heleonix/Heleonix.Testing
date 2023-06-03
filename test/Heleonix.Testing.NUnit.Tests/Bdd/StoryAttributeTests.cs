@@ -20,46 +20,24 @@ namespace Heleonix.Testing.NUnit.Aaa
         /// <summary>
         /// Tests the <see cref="StoryAttribute.TestName"/>.
         /// </summary>
-        [Test(Description = "When an id and summary are provided Should return the test name")]
+        [Test(Description = "When an id and summary are provided Should return the test name and corresponding properties")]
         public static void TestName()
         {
             // Arrange
-            var componentTestAttribute = new StoryAttribute { Id = "ID-123", Summary = "Some summary" };
+            var storyTestAttribute = new StoryAttribute { Id = "ID-123", Summary = "Some summary" };
 
             // Act
-            var testName = componentTestAttribute.GetType().GetProperty(
+            var testName = storyTestAttribute.GetType().GetProperty(
                 nameof(TestName),
-                BindingFlags.Instance | BindingFlags.NonPublic).GetValue(componentTestAttribute) as string;
+                BindingFlags.Instance | BindingFlags.NonPublic).GetValue(storyTestAttribute) as string;
+
+            var properties = storyTestAttribute.GetType().GetProperty(
+                "Properties",
+                BindingFlags.Instance | BindingFlags.NonPublic).GetValue(storyTestAttribute) as IDictionary<string, object>;
 
             // Assert
             Assert.That(testName, Is.EqualTo("ID-123: Some summary"));
-        }
-
-        /// <summary>
-        /// Tests the <see cref="StoryAttribute.Properties"/>.
-        /// </summary>
-        [Test(Description = "When an AsA, IWant, SoThat are provided Should return properties with those statements")]
-        public static void Properties()
-        {
-            // Arrange
-            var componentTestAttribute = new StoryAttribute
-            {
-                Id = "ID-1",
-                Summary = "Summary",
-                AsA = "PO",
-                IWant = "Everything",
-                SoThat = "I'm ok",
-            };
-
-            // Act
-            var properties = componentTestAttribute.GetType().GetProperty(
-                nameof(Properties),
-                BindingFlags.Instance | BindingFlags.NonPublic).GetValue(componentTestAttribute)
-                    as IDictionary<string, object>;
-
-            // Assert
-            Assert.That(properties.Count, Is.EqualTo(1));
-            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output.TestName"], Is.EqualTo("ID-1: Summary"));
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output.TestName"], Is.EqualTo("ID-123: Some summary"));
         }
     }
 }

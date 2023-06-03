@@ -23,7 +23,7 @@ namespace Heleonix.Testing.NUnit.Aaa
         /// <summary>
         /// Tests the <see cref="ComponentTestAttribute.TestName"/>.
         /// </summary>
-        [Test(Description = "When a component type is provided Should return the test name")]
+        [Test(Description = "When a component type is provided Should return the test name and corresponding properties")]
         public static void TestName1()
         {
             // Arrange
@@ -34,14 +34,19 @@ namespace Heleonix.Testing.NUnit.Aaa
                 "TestName",
                 BindingFlags.Instance | BindingFlags.NonPublic).GetValue(componentTestAttribute) as string;
 
+            var properties = componentTestAttribute.GetType().GetProperty(
+                "Properties",
+                BindingFlags.Instance | BindingFlags.NonPublic).GetValue(componentTestAttribute) as IDictionary<string, object>;
+
             // Assert
             Assert.That(testName, Is.EqualTo("Int32"));
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output.Type"], Is.EqualTo("Int32"));
         }
 
         /// <summary>
         /// Tests the <see cref="ComponentTestAttribute.TestName"/>.
         /// </summary>
-        [Test(Description = "When a component type is not provided Should return null")]
+        [Test(Description = "When a component type is not provided Should return null and corresponding properties")]
         public static void TestName2()
         {
             // Arrange
@@ -52,8 +57,13 @@ namespace Heleonix.Testing.NUnit.Aaa
                 "TestName",
                 BindingFlags.Instance | BindingFlags.NonPublic).GetValue(componentTestAttribute) as string;
 
+            var properties = componentTestAttribute.GetType().GetProperty(
+               "Properties",
+               BindingFlags.Instance | BindingFlags.NonPublic).GetValue(componentTestAttribute) as IDictionary<string, object>;
+
             // Assert
             Assert.That(testName, Is.Null);
+            Assert.That(properties["Heleonix.Testing.NUnit.Internal.Output.Type"], Is.Null);
         }
     }
 }
