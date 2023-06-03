@@ -64,7 +64,7 @@ namespace Heleonix.Testing.NUnit.Bdd
         /// </value>
         protected override IDictionary<string, object> Properties => new Dictionary<string, object>
         {
-            { TestPropertiesHelper.OutputPropertyName(nameof(this.TestName)), $"{this.TestName}" },
+            { TestPropertiesHelper.OutputPropertyName(nameof(this.TestName)), this.TestName },
         };
 
         /// <summary>
