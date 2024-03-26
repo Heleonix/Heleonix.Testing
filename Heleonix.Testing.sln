@@ -16,14 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4AEAF240-3ED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{783E9705-9D30-414A-956F-DBDCB06F3ACA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{5334635D-74B4-48B3-AEB7-EF04B0887CAB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{E4223876-529E-4757-98A2-97D488BD32B3}"
-	ProjectSection(SolutionItems) = preProject
-		Docs\images\AAA.png = Docs\images\AAA.png
-		Docs\images\BDD.png = Docs\images\BDD.png
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heleonix.Testing.NUnit", "src\Heleonix.Testing.NUnit\Heleonix.Testing.NUnit.csproj", "{D6274A9F-0512-4C7B-8B3B-6261AB237C37}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Heleonix.Testing.NUnit.Tests", "test\Heleonix.Testing.NUnit.Tests\Heleonix.Testing.NUnit.Tests.csproj", "{1EC40217-DCF2-4B45-A80B-DB3E7CB90274}"
@@ -55,7 +47,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E4223876-529E-4757-98A2-97D488BD32B3} = {5334635D-74B4-48B3-AEB7-EF04B0887CAB}
 		{D6274A9F-0512-4C7B-8B3B-6261AB237C37} = {4AEAF240-3ED0-49D3-B054-27402285220A}
 		{1EC40217-DCF2-4B45-A80B-DB3E7CB90274} = {783E9705-9D30-414A-956F-DBDCB06F3ACA}
 		{AC6B7280-51F0-4DC9-A0FD-1B467CE91625} = {FB8F527B-E3D0-412D-9F23-1DD7F36E6889}

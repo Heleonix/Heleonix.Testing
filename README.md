@@ -140,7 +140,7 @@ public static class MyComponentTests
 
 ### Tests Output
 
-![AAA](https://heleonix.github.io/docs/Heleonix.Testing/images/AAA.png)
+![AAA](https://raw.githubusercontent.com/Heleonix/docs/master/Heleonix.Testing/images/AAA.png)
 
 ## BDD: Behavior Driven Development
 
@@ -224,7 +224,7 @@ public static class TheCoolStory
 
 ### Tests Output
 
-![BDD](https://heleonix.github.io/docs/Heleonix.Testing/images/BDD.png)
+![BDD](https://raw.githubusercontent.com/Heleonix/docs/master/Heleonix.Testing/images/BDD.png)
 
 ## Contribution Guideline
 
