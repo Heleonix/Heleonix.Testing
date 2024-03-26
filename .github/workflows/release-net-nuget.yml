@@ -1,0 +1,18 @@
+name: "Release: .NET / NuGet"
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+      - 'LICENSE'
+      - 'README.md'
+
+jobs:
+  Release:
+    uses: Heleonix/workflows/.github/workflows/release-net-nuget.yml@main
+    secrets: inherit

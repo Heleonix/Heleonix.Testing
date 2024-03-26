@@ -3,27 +3,26 @@
 // Licensed under the MIT license. See LICENSE file in the repository root for full license information.
 // </copyright>
 
-namespace Heleonix.Testing.NUnit.Tests.Aaa.Examples
+namespace Heleonix.Testing.NUnit.Tests.Aaa.Examples;
+
+/// <summary>
+/// Dummy component.
+/// </summary>
+public static class MyComponent
 {
     /// <summary>
-    /// Dummy component.
+    /// Dummy member.
     /// </summary>
-    public static class MyComponent
+    public static void Member1()
     {
-        /// <summary>
-        /// Dummy member.
-        /// </summary>
-        public static void Member1()
-        {
-            // Dummy member.
-        }
+        // Dummy member.
+    }
 
-        /// <summary>
-        /// Dummy member.
-        /// </summary>
-        public static void Member2()
-        {
-            // Dummy member.
-        }
+    /// <summary>
+    /// Dummy member.
+    /// </summary>
+    public static void Member2()
+    {
+        // Dummy member.
     }
 }
