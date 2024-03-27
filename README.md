@@ -241,6 +241,6 @@ public static class TheCoolStory
    > This commit message will be used in automatically generated [Github Release Notes](https://github.com/Heleonix/Heleonix.Testing/releases)
    > and [NuGet Release Notes](https://www.nuget.org/packages/Heleonix.Testing/#releasenotes-body-tab)
 
-5. Monitor the [Release: .NET / NuGet](https://github.com/Heleonix/Heleonix.Testing/actions/workflows/release-net-nuget.yml)
+6. Monitor the [Release: .NET / NuGet](https://github.com/Heleonix/Heleonix.Testing/actions/workflows/release-net-nuget.yml)
    GitHub workflow to make sure your changes are delivered successfully
-5. In case of any issues, please contact [heleonix.sln@gmail.com](mailto:heleonix.sln@gmail.com)
+7. In case of any issues, please contact [heleonix.sln@gmail.com](mailto:heleonix.sln@gmail.com)
