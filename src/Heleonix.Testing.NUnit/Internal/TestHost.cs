@@ -8,7 +8,11 @@ namespace Heleonix.Testing.NUnit.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text.RegularExpressions;
+using global::NUnit.Framework;
+using global::NUnit.Framework.Interfaces;
 using global::NUnit.Framework.Internal;
 
 /// <summary>
@@ -89,8 +93,17 @@ internal abstract class TestHost
                 TestExecutionContext.CurrentContext.OutWriter.WriteLine($"{new string(' ', node.NestingLevel * 4)}\u2713 {node.Description}");
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            if (ex is not AssertionException)
+            {
+                var result = TestExecutionContext.CurrentContext.CurrentResult;
+
+                result.RecordAssertion(AssertionStatus.Failed, ex.Message, ex.StackTrace);
+
+                result.RecordTestCompletion();
+            }
+
             if (node.IsAssertable)
             {
                 TestExecutionContext.CurrentContext.OutWriter.WriteLine($"{new string(' ', node.NestingLevel * 4)}\u2717 {node.Description}");
@@ -110,7 +123,7 @@ internal abstract class TestHost
     {
         if (!this.SpecStructureRules.ContainsKey(child.Type))
         {
-            throw new InvalidOperationException($"The spec '{child.Type}' is not valid for the current test pattern");
+            throw new InvalidOperationException($"The spec '{child.Type}' is not valid for the current test pattern.");
         }
 
         var rule = this.SpecStructureRules[child.Type];
@@ -119,7 +132,7 @@ internal abstract class TestHost
             && !Regex.IsMatch(string.Join(",", this.specExecutionStack), rule.SpecExecutionStackRule))
         {
             throw new InvalidOperationException($"Invalid test structure: cannot place the '{child.Type}' " +
-                $"into the '{string.Join("->", this.specExecutionStack.Reverse())}'");
+                $"into the '{string.Join("->", this.specExecutionStack.Reverse())}'.");
         }
 
         if (rule.PredecessorsRule != null)
@@ -129,7 +142,7 @@ internal abstract class TestHost
             if (!Regex.IsMatch(string.Join(",", parent.Children.Reverse()), rule.PredecessorsRule))
             {
                 throw new InvalidOperationException($"Invalid test structure: cannot place the '{child.Type}' " +
-                $"after the '{string.Join("->", parent.Children)}'");
+                $"after the '{string.Join("->", parent.Children)}'.");
             }
         }
     }
