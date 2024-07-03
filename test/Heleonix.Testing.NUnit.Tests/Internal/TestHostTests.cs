@@ -9,7 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using global::NUnit.Framework;
+using global::NUnit.Framework.Interfaces;
 using global::NUnit.Framework.Internal;
+using global::NUnit.Framework.Internal.Builders;
 using Heleonix.Testing.NUnit.Internal;
 using Moq;
 using Moq.Protected;
@@ -268,7 +270,7 @@ public static class TestHostTests
     /// <summary>
     /// Tests writing of a failed test with marking into the Output.
     /// </summary>
-    [Test(Description = "When an assertable node is throwing an exception Should write the test description as failed into the output")]
+    [Test(Description = "When an assertable node is throwing an exception Should write the test description as failed into the output and write failure result")]
     public static void Execute1()
     {
         // Arrange
@@ -285,16 +287,33 @@ public static class TestHostTests
 
         var rootNode = new SpecNode(SpecNodeType.Root, null, () => { });
 
-        var node = new SpecNode(SpecNodeType.Should, "description", () => { throw new InvalidOperationException(); }, true);
+        var node = new SpecNode(
+            SpecNodeType.Should,
+            "description",
+            () => { throw new InvalidOperationException("Custom exception message."); },
+            true);
 
         rootNode.Add(node);
+
+        var prevResult = TestExecutionContext.CurrentContext.CurrentResult;
+
+        // Substitute the current test result to catch SpecNode execution.
+        TestExecutionContext.CurrentContext.CurrentResult =
+            TestExecutionContext.CurrentContext.CurrentTest.MakeTestResult();
 
         // Act
         methodInfo.Invoke(testHostMock.Object, new[] { node });
 
+        var failCount = TestExecutionContext.CurrentContext.CurrentResult.FailCount;
+        var message = TestExecutionContext.CurrentContext.CurrentResult.Message;
+        var stackTrace = TestExecutionContext.CurrentContext.CurrentResult.StackTrace;
+
+        TestExecutionContext.CurrentContext.CurrentResult = prevResult;
+
         // Assert
-        // Cannot read the NUnit Output, so rely on the 100% test coverage.
-        Assert.True(true);
+        Assert.That(failCount, Is.EqualTo(1));
+        Assert.That(message, Contains.Substring("Custom exception message."));
+        Assert.That(stackTrace, Is.Not.Empty);
     }
 
     /// <summary>
